@@ -14,6 +14,9 @@ public class Main_Auto {
 		TypAuta auto1 = new TypAuta( false, "macky", 40, "Jaguar XJ", "seda");
 		System.out.println(auto1);
 		
+		TypAuta auto2 = new TypAuta( false, "macky", 50, "Marcedes CLA", "cervena" );
+		System.out.println(auto2);
+		
 	}
 }
 
