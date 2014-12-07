@@ -10,6 +10,14 @@ public class Lorry extends Vehicle {
 		super(dlt, maxLoad, licensePlate, licensePlate);
 		this.maxLoad = maxLoad;
 	}
+
+	@Override
+	public String toString() {
+		return "Lorry [maxLoad=" + maxLoad + ", getId()=" + getId()
+				+ ", getDlt()=" + getDlt() + ", getNumberOfWheels()="
+				+ getNumberOfWheels() + ", getLicensePlate()="
+				+ getLicensePlate() + ", getType()=" + getType() + "]";
+	}
 	
 	
 	
