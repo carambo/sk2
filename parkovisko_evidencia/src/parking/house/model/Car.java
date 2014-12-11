@@ -19,6 +19,7 @@ public class Car extends Vehicle {
 	}
 
 	// teraz zabzpecit aby sa mi to vypisalo v okne cez GUI
+	
 
 	
 }
