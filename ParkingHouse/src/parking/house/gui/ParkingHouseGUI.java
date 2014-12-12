@@ -36,7 +36,7 @@ public class ParkingHouseGUI {
 		label1.pack();
 
 		Button button1 = new Button(shell, SWT.DEFAULT);
-		button1.setText("Open Lorry");
+		button1.setText("Open Lorries");
 		button1.setLocation(0, 30);
 		button1.setSize(100, 50);
 		button1.addSelectionListener(new SelectionListener() {
@@ -67,7 +67,7 @@ public class ParkingHouseGUI {
 		label2.pack();
 
 		Button button2 = new Button(shell, SWT.DEFAULT);
-		button2.setText("Open Car");
+		button2.setText("Open Cars");
 		button2.setLocation(0, 60);
 		button2.setSize(100, 50);
 		button2.addSelectionListener(new SelectionListener() { // here are some
