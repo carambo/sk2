@@ -9,14 +9,12 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import parking.house.model.Car;
 import parking.house.model.DrivingLicenseType;
 import parking.house.model.Lorry;
 
 public class ParkingHouseGUI {
 
-	private Text label1; // for Lorry
-	private Text label2; // for Car
+	private Text label1;
 	
 	public ParkingHouseGUI() {} // prazdny konstruktor
 	
@@ -24,23 +22,21 @@ public class ParkingHouseGUI {
 		Display display = new Display();
 		Shell shell = new Shell(display);
 		shell.setMinimumSize(800, 200);
-		
-		// label1
 
 		label1 = new Text(shell, SWT.DEFAULT); // label mozem zmenit napr na text - https://www.eclipse.org/swt/widgets/
-		label1.setText("Lorry");
+		label1.setText("Hello World SWT");
 		label1.setSize(400, 30);
 		label1.pack();
 
 		Button button1 = new Button(shell, SWT.DEFAULT);
-		button1.setText("Open Lorry");
+		button1.setText("OK");
 		button1.setLocation(0, 30);
 		button1.setSize(100, 50);
 		button1.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				Lorry car1 = new Lorry(DrivingLicenseType.D, 4, "BA882AB", "Scania", 420);
+				Lorry car1 = new Lorry(DrivingLicenseType.D, 4, "IL707BZ", "Scania", 420);
 				label1.setText(car1.toString());
 				label1.pack();
 			}
@@ -51,37 +47,6 @@ public class ParkingHouseGUI {
 				
 			}
 		});
-		
-		// end of label1
-		
-		// label 2 
-		
-		label2 = new Text(shell, SWT.DEFAULT); // I forgot to initialized label2 first time
-		label2.setText("Car");
-		label2.setSize(400, 30);
-		label2.pack();
-		
-		Button button2 = new Button(shell, SWT.DEFAULT);
-		button2.setText("Open Car");
-		button2.setLocation(0, 60);
-		button2.setSize(100, 50);
-		button2.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg1) {
-				Car car2 = new Car(DrivingLicenseType.B, 4, "BA255AA", "BMW", 3);
-				label2.setText(car2.toString());
-		        label2.pack();
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg1) {}
-		});
-		
-		// end of label2
-		
-		
-		
 		button1.pack();
 		
 		shell.pack();
