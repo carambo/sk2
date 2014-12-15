@@ -74,6 +74,10 @@ public class ParkingHouseGUI {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
+				Car car2 = new Car(DrivingLicenseType.B, 4, "BA255AA", "BMW", 3);
+				label2.setText(car2.toString());
+				label2.pack();
+				
 				// TODO Auto-generated method stub
 				
 			}
