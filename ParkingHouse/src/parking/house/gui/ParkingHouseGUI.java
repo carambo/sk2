@@ -70,19 +70,21 @@ public class ParkingHouseGUI {
 		button2.setText("Open Cars");
 		button2.setLocation(0, 60);
 		button2.setSize(100, 50);
-		button2.addSelectionListener(new SelectionListener() { // here are some
-																// troubles
+		button2.addSelectionListener(new SelectionListener() {
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent arg1) { // and here
-				Car car2 = new Car(DrivingLicenseType.B, 4, "BA255AA", "BMW", 3);
-				label2.setText(car2.toString());
-				label2.pack();
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent arg1) {
-			} // and here too
+			public void widgetSelected(SelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			} 
+
+			
 		});
 
 		// end of label2
