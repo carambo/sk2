@@ -19,4 +19,5 @@ public class Motorcycle extends Vehicle {
 
 }
 
-// spytat sa doda ci mam nastavit getters a setters pre premenne specificke pre danu triedu/typ auta
+// spytat sa doda ci mam nastavit getters a setters pre premenne specificke pre
+// danu triedu/typ auta
