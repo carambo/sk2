@@ -1,5 +1,7 @@
 package parking.house.gui;
 
+import java.io.PushbackInputStream;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.events.SelectionEvent;
@@ -10,6 +12,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import parking.house.model.Bus;
 import parking.house.model.Car;
 import parking.house.model.DrivingLicenseType;
 import parking.house.model.Lorry;
@@ -18,21 +21,22 @@ public class ParkingHouseGUI {
 
 	private Text label1; // for Lorry
 	private Text label2; // for Car
+	private Text label3; // for Bus
 
 	public ParkingHouseGUI() {
-	} // prazdny konstruktor
+	} // empty constructor
 
 	public void createGUI() {
 		Display display = new Display();
 		Shell shell = new Shell(display);
-		shell.setMinimumSize(800, 200);
+		shell.setMinimumSize(1000, 200);
 		RowLayout layout = new RowLayout();
 		
 		layout.wrap = true;
 		shell.setLayout(layout);
 		
  
-		// label1
+		// label1 - Lorry
 
 		label1 = new Text(shell, SWT.PUSH); // label mozem zmenit napr na
 												// text -
@@ -43,8 +47,6 @@ public class ParkingHouseGUI {
 
 		Button button1 = new Button(shell, SWT.PUSH);
 		button1.setText("Open Lorries");
-		button1.setLocation(0, 30);
-		button1.setSize(100, 50);
 		button1.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -62,9 +64,9 @@ public class ParkingHouseGUI {
 			}
 		});
 
-		// end of label1
+		// end of label1 - Lorry
 
-		// label 2
+		// label 2 - Car
 
 		label2 = new Text(shell, SWT.PUSH); // I forgot to initialized label2
 												// first time
@@ -72,14 +74,12 @@ public class ParkingHouseGUI {
 		label2.setSize(400, 30);
 		label2.pack();
 
-		Button button2 = new Button(shell, SWT.DEFAULT);
+		Button button2 = new Button(shell, SWT.PUSH);
 		button2.setText("Open Cars");
-		button2.setLocation(0, 60);
-		button2.setSize(100, 50);
 		button2.addSelectionListener(new SelectionListener() {
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
+			public void widgetSelected(SelectionEvent arg0) {
 				Car car2 = new Car(DrivingLicenseType.B, 4, "BA255AA", "BMW", 3);
 				label2.setText(car2.toString());
 				label2.pack();
@@ -89,7 +89,7 @@ public class ParkingHouseGUI {
 			}
 
 			@Override
-			public void widgetSelected(SelectionEvent arg0) {
+			public void widgetDefaultSelected(SelectionEvent arg0) {
 				// TODO Auto-generated method stub
 				
 			} 
@@ -97,12 +97,48 @@ public class ParkingHouseGUI {
 			
 		});
 
-		// end of label2
+		// end of label2 - Car
+		
+		
+		// label 3 - Bus
+		
+		label3 = new Text(shell, SWT.PUSH);
+		
+		label3.setText("Bus");
+		label3.setSize(400, 30);
+		label3.pack();
+		
+		Button button3 = new Button(shell, SWT.PUSH);
+		button3.setText("Open Bus");
+		button3.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				Bus car3 = new Bus(DrivingLicenseType.D, 4, "BA554NA", "Karosa", 70);
+				label3.setText(car3.toString());
+				label3.pack();
+				
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		
+		// end of label 3 - Bus
 
 		button1.pack();
+		button2.pack();
+		button3.pack();
 
 		shell.pack();
 		shell.open();
+		
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch())
 				display.sleep();
