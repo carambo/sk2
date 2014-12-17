@@ -1,6 +1,7 @@
 package parking.house.gui;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Button;
@@ -25,17 +26,22 @@ public class ParkingHouseGUI {
 		Display display = new Display();
 		Shell shell = new Shell(display);
 		shell.setMinimumSize(800, 200);
-
+		RowLayout layout = new RowLayout();
+		
+		layout.wrap = true;
+		shell.setLayout(layout);
+		
+ 
 		// label1
 
-		label1 = new Text(shell, SWT.DEFAULT); // label mozem zmenit napr na
+		label1 = new Text(shell, SWT.PUSH); // label mozem zmenit napr na
 												// text -
 												// https://www.eclipse.org/swt/widgets/
 		label1.setText("Lorry");
 		label1.setSize(400, 30);
 		label1.pack();
 
-		Button button1 = new Button(shell, SWT.DEFAULT);
+		Button button1 = new Button(shell, SWT.PUSH);
 		button1.setText("Open Lorries");
 		button1.setLocation(0, 30);
 		button1.setSize(100, 50);
@@ -60,7 +66,7 @@ public class ParkingHouseGUI {
 
 		// label 2
 
-		label2 = new Text(shell, SWT.DEFAULT); // I forgot to initialized label2
+		label2 = new Text(shell, SWT.PUSH); // I forgot to initialized label2
 												// first time
 		label2.setText("Car");
 		label2.setSize(400, 30);
