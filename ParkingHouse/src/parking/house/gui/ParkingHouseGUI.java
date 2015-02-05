@@ -2,7 +2,6 @@ package parking.house.gui;
 
 import java.io.PushbackInputStream;
 
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.events.SelectionEvent;
@@ -12,7 +11,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.Menu; // not sure whether this needs to be here
 
 import parking.house.model.Bus;
 import parking.house.model.Car;
@@ -26,8 +24,7 @@ public class ParkingHouseGUI {
 	private Text label2; // for Car
 	private Text label3; // for Bus
 	private Text label4; // for Motorcycle
-  
-	
+
 	public ParkingHouseGUI() {
 	} // empty constructor
 
@@ -40,15 +37,6 @@ public class ParkingHouseGUI {
 		layout.wrap = true;
 		shell.setLayout(layout);
 
-		// start of  menu
-		
-		
-		
-		
-		// end of menu
-		
-		
-		
 		// label1 - Lorry
 
 		label1 = new Text(shell, SWT.PUSH); // label mozem zmenit napr na
@@ -157,7 +145,8 @@ public class ParkingHouseGUI {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				Motorcycle car4 = new Motorcycle(DrivingLicenseType.A, 2, "BA112MN", "Honda", 140);
+				Motorcycle car4 = new Motorcycle(DrivingLicenseType.A, 2,
+						"BA112MN", "Honda", 140);
 				label4.setText(car4.toString());
 				label4.pack();
 				// TODO Auto-generated method stub
