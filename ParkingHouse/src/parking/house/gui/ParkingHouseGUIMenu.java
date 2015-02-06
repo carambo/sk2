@@ -24,7 +24,9 @@ public class ParkingHouseGUIMenu {
 	Label label;
 
 	public ParkingHouseGUIMenu() {
-
+		
+		
+   
 		display = new Display();
 		shell = new Shell(display);
 		shell.setText("Menu Example");
@@ -93,7 +95,8 @@ public class ParkingHouseGUIMenu {
 			label.setText("Delete cars that left");
 		}
 	}
-
+	
+	
 	public static void main(String[] args) {
 		ParkingHouseGUIMenu GUImenu = new ParkingHouseGUIMenu();
 	}

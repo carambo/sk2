@@ -1,8 +1,9 @@
 package parking.house;
 
+import org.eclipse.swt.widgets.Display;
+
 import parking.house.gui.ParkingHouseGUI;
-import parking.house.model.DrivingLicenseType;
-import parking.house.model.Lorry;
+import parking.house.gui.ParkingHouseGUIMenu; // not needed here so far
 
 public class ParkingHouseStarter {
 
@@ -12,6 +13,9 @@ public class ParkingHouseStarter {
 		
 		ParkingHouseGUI phg = new ParkingHouseGUI();
 		phg.createGUI();
+		
+		
+		
 	}
 
 }

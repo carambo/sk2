@@ -3,6 +3,7 @@ package parking.house.gui;
 import java.io.PushbackInputStream;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -32,10 +33,12 @@ public class ParkingHouseGUI {
 		Display display = new Display();
 		Shell shell = new Shell(display);
 		shell.setMinimumSize(1000, 200);
-		RowLayout layout = new RowLayout();
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 1;
+		shell.setLayout(gridLayout);
+		
 
-		layout.wrap = true;
-		shell.setLayout(layout);
+		
 
 		// label1 - Lorry
 
