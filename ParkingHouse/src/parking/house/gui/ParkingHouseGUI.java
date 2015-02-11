@@ -10,9 +10,14 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import parking.house.gui.ParkingHouseGUIMenu.fileAddCarItemListener;
+import parking.house.gui.ParkingHouseGUIMenu.fileDelCarItemListener;
+import parking.house.gui.ParkingHouseGUIMenu.fileExitItemListener;
 import parking.house.model.Bus;
 import parking.house.model.Car;
 import parking.house.model.DrivingLicenseType;
@@ -36,9 +41,6 @@ public class ParkingHouseGUI {
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
 		shell.setLayout(gridLayout);
-		
-
-		
 
 		// label1 - Lorry
 
@@ -164,6 +166,73 @@ public class ParkingHouseGUI {
 		});
 
 		// end of label4 - Motorcycle
+
+		// begin of menu
+
+		Menu menuBar, fileMenu;
+
+		MenuItem fileMenuHeader;
+
+		MenuItem fileAddCarItem, fileDelCarItem, fileExitItem;
+
+		Label label;
+
+		label = new Label(shell, SWT.CENTER);
+		label.setBounds(shell.getClientArea());
+
+		menuBar = new Menu(shell, SWT.BAR);
+		fileMenuHeader = new MenuItem(menuBar, SWT.CASCADE);
+		fileMenuHeader.setText("&File");
+
+		fileMenu = new Menu(shell, SWT.DROP_DOWN);
+		fileMenuHeader.setMenu(fileMenu);
+
+		fileAddCarItem = new MenuItem(fileMenu, SWT.PUSH);
+		fileAddCarItem.setText("&Add car");
+
+		fileDelCarItem = new MenuItem(fileMenu, SWT.PUSH);
+		fileDelCarItem.setText("&Delete car");
+
+		fileExitItem = new MenuItem(fileMenu, SWT.PUSH);
+		fileExitItem.setText("&Exit");
+
+	    fileAddCarItem.addSelectionListener(new fileAddCarItemListener());
+		fileDelCarItem.addSelectionListener(new fileDelCarItemListener());
+		fileExitItem.addSelectionListener(new fileExitItemListener());
+
+		class fileExitItemListener implements SelectionListener {
+			public void widgetSelected(SelectionEvent event) {
+				shell.close();
+				display.dispose();
+			}
+
+			public void widgetDefaultSelected(SelectionEvent event) {
+				shell.close();
+				display.dispose();
+			}
+		}
+
+		class fileAddCarItemListener implements SelectionListener {
+			public void widgetSelected(SelectionEvent event) {
+				label.setText("Add some new car");
+			}
+
+			public void widgetDefaultSelected(SelectionEvent event) {
+				label.setText("Add some new car");
+			}
+		}
+
+		class fileDelCarItemListener implements SelectionListener {
+			public void widgetSelected(SelectionEvent event) {
+				label.setText("Delete cars that left");
+			}
+
+			public void widgetDefaultSelected(SelectionEvent event) {
+				label.setText("Delete cars that left");
+			}
+		}
+
+		// end of menu
 
 		button1.pack();
 		button2.pack();

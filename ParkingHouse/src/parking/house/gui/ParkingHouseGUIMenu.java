@@ -9,6 +9,10 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 
+
+
+
+
 public class ParkingHouseGUIMenu {
 
 	Display display;
@@ -79,6 +83,16 @@ public class ParkingHouseGUIMenu {
 	class fileAddCarItemListener implements SelectionListener {
 		public void widgetSelected(SelectionEvent event) {
 			label.setText("Add some new car");
+			// begin of try to make a input field
+			
+			
+			
+			
+			
+			
+			
+			// end of try to make input field
+			
 		}
 
 		public void widgetDefaultSelected(SelectionEvent event) {
@@ -101,3 +115,76 @@ public class ParkingHouseGUIMenu {
 		ParkingHouseGUIMenu GUImenu = new ParkingHouseGUIMenu();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
