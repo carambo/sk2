@@ -167,8 +167,22 @@ public class ParkingHouseGUI {
 
 		// end of label4 - Motorcycle
 
-		// begin of menu
+		button1.pack();
+		button2.pack();
+		button3.pack();
+		button4.pack();
 
+		shell.pack();
+		shell.open();
+
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch())
+				display.sleep();
+		}
+		display.dispose();
+	}
+
+	public void createMenu(Shell shell, Display display) {
 		Menu menuBar, fileMenu;
 
 		MenuItem fileMenuHeader;
@@ -196,7 +210,7 @@ public class ParkingHouseGUI {
 		fileExitItem = new MenuItem(fileMenu, SWT.PUSH);
 		fileExitItem.setText("&Exit");
 
-	    fileAddCarItem.addSelectionListener(new fileAddCarItemListener());
+		fileAddCarItem.addSelectionListener(new fileAddCarItemListener());
 		fileDelCarItem.addSelectionListener(new fileDelCarItemListener());
 		fileExitItem.addSelectionListener(new fileExitItemListener());
 
@@ -232,21 +246,6 @@ public class ParkingHouseGUI {
 			}
 		}
 
-		// end of menu
-
-		button1.pack();
-		button2.pack();
-		button3.pack();
-		button4.pack();
-
-		shell.pack();
-		shell.open();
-
-		while (!shell.isDisposed()) {
-			if (!display.readAndDispatch())
-				display.sleep();
-		}
-		display.dispose();
 	}
 
 }
