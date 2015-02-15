@@ -1,10 +1,9 @@
 package parking.house.gui;
 
-import java.io.PushbackInputStream;
+import java.util.Set;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Button;
@@ -15,9 +14,6 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import parking.house.gui.ParkingHouseGUIMenu.fileAddCarItemListener;
-import parking.house.gui.ParkingHouseGUIMenu.fileDelCarItemListener;
-import parking.house.gui.ParkingHouseGUIMenu.fileExitItemListener;
 import parking.house.model.Bus;
 import parking.house.model.Car;
 import parking.house.model.DrivingLicenseType;
@@ -26,13 +22,14 @@ import parking.house.model.Motorcycle;
 
 public class ParkingHouseGUI {
 
-	private Text label1; // for Lorry
-	private Text label2; // for Car
-	private Text label3; // for Bus
-	private Text label4; // for Motorcycle
+	private Text labelLorry;
+	private Text labelCar;
+	private Text labelBus;
+	private Text labelMotorcycle;
 
 	public ParkingHouseGUI() {
-	} // empty constructor
+		createGUI();
+	}
 
 	public void createGUI() {
 		Display display = new Display();
@@ -42,135 +39,13 @@ public class ParkingHouseGUI {
 		gridLayout.numColumns = 1;
 		shell.setLayout(gridLayout);
 
-		// label1 - Lorry
 
-		label1 = new Text(shell, SWT.PUSH); // label mozem zmenit napr na
-											// text -
-											// https://www.eclipse.org/swt/widgets/
-		label1.setText("Lorry");
-		label1.setSize(400, 30);
-		label1.pack();
+		// begin of menu
 
-		Button button1 = new Button(shell, SWT.PUSH);
-		button1.setText("Open Lorries");
-		button1.addSelectionListener(new SelectionListener() {
+		setTestButtons(shell, display);
+		setMenu(shell, display);
 
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				Lorry car1 = new Lorry(DrivingLicenseType.D, 4, "BA882AB",
-						"Scania", 420);
-				label1.setText(car1.toString());
-				label1.pack();
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		// end of label1 - Lorry
-
-		// label2 - Car
-
-		label2 = new Text(shell, SWT.PUSH); // I forgot to initialized label2
-											// first time
-		label2.setText("Car");
-		label2.setSize(400, 30);
-		label2.pack();
-
-		Button button2 = new Button(shell, SWT.PUSH);
-		button2.setText("Open Cars");
-		button2.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				Car car2 = new Car(DrivingLicenseType.B, 4, "BA255AA", "BMW", 3);
-				label2.setText(car2.toString());
-				label2.pack();
-
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-		});
-
-		// end of label2 - Car
-
-		// label3 - Bus
-
-		label3 = new Text(shell, SWT.PUSH);
-
-		label3.setText("Bus");
-		label3.setSize(400, 30);
-		label3.pack();
-
-		Button button3 = new Button(shell, SWT.PUSH);
-		button3.setText("Open Bus");
-		button3.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				Bus car3 = new Bus(DrivingLicenseType.D, 4, "BA554NA",
-						"Karosa", 70);
-				label3.setText(car3.toString());
-				label3.pack();
-
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		// end of label3 - Bus
-
-		// label4 - Motorcycle
-
-		label4 = new Text(shell, SWT.PUSH);
-
-		label4.setText("Motorcycle");
-		label4.setSize(400, 30);
-		label3.pack();
-
-		Button button4 = new Button(shell, SWT.PUSH);
-		button4.setText("Open Motorcycle");
-		button4.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				Motorcycle car4 = new Motorcycle(DrivingLicenseType.A, 2,
-						"BA112MN", "Honda", 140);
-				label4.setText(car4.toString());
-				label4.pack();
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		// end of label4 - Motorcycle
-
-		button1.pack();
-		button2.pack();
-		button3.pack();
-		button4.pack();
+		// end of menu
 
 		shell.pack();
 		shell.open();
@@ -182,14 +57,130 @@ public class ParkingHouseGUI {
 		display.dispose();
 	}
 
-	public void createMenu(Shell shell, Display display) {
+	private void setTestButtons(Shell shell, Display display){
+		// label1 - Lorry
+
+				labelLorry = new Text(shell, SWT.PUSH); // label mozem zmenit napr na
+				// text -
+				// https://www.eclipse.org/swt/widgets/
+				labelLorry.setText("Lorry");
+				labelLorry.setSize(400, 30);
+				labelLorry.pack();
+
+				Button buttonLorry = new Button(shell, SWT.PUSH);
+				buttonLorry.setText("Open Lorries");
+				buttonLorry.addSelectionListener(new SelectionListener() {
+
+					@Override
+					public void widgetSelected(SelectionEvent arg0) {
+						Lorry car1 = new Lorry(DrivingLicenseType.D, 4, "BA882AB",
+								"Scania", 420);
+						labelLorry.setText(car1.toString());
+						labelLorry.pack();
+					}
+
+					@Override
+					public void widgetDefaultSelected(SelectionEvent arg0) {
+					}
+				});
+
+				// end of label1 - Lorry
+
+				// label2 - Car
+
+				labelCar = new Text(shell, SWT.PUSH); // I forgot to initialized label2
+														// first time
+				labelCar.setText("Car");
+				labelCar.setSize(400, 30);
+				labelCar.pack();
+
+				Button buttonCar = new Button(shell, SWT.PUSH);
+				buttonCar.setText("Open Cars");
+				buttonCar.addSelectionListener(new SelectionListener() {
+
+					@Override
+					public void widgetSelected(SelectionEvent arg0) {
+						Car car2 = new Car(DrivingLicenseType.B, 4, "BA255AA", "BMW", 3);
+						labelCar.setText(car2.toString());
+						labelCar.pack();
+					}
+
+					@Override
+					public void widgetDefaultSelected(SelectionEvent arg0) {
+					}
+
+				});
+
+				// end of label2 - Car
+
+				// label3 - Bus
+
+				labelBus = new Text(shell, SWT.PUSH);
+
+				labelBus.setText("Bus");
+				labelBus.setSize(400, 30);
+				labelBus.pack();
+
+				Button buttonBus = new Button(shell, SWT.PUSH);
+				buttonBus.setText("Open Bus");
+				buttonBus.addSelectionListener(new SelectionListener() {
+
+					@Override
+					public void widgetSelected(SelectionEvent arg0) {
+						Bus car3 = new Bus(DrivingLicenseType.D, 4, "BA554NA",
+								"Karosa", 70);
+						labelBus.setText(car3.toString());
+						labelBus.pack();
+					}
+
+					@Override
+					public void widgetDefaultSelected(SelectionEvent arg0) {
+					}
+				});
+
+				// end of label3 - Bus
+
+				// label4 - Motorcycle
+
+				labelMotorcycle = new Text(shell, SWT.PUSH);
+
+				labelMotorcycle.setText("Motorcycle");
+				labelMotorcycle.setSize(400, 30);
+				labelBus.pack();
+
+				Button buttonMotorcycle = new Button(shell, SWT.PUSH);
+				buttonMotorcycle.setText("Open Motorcycle");
+				buttonMotorcycle.addSelectionListener(new SelectionListener() {
+
+					@Override
+					public void widgetSelected(SelectionEvent arg0) {
+						Motorcycle car4 = new Motorcycle(DrivingLicenseType.A, 2,
+								"BA112MN", "Honda", 140);
+						labelMotorcycle.setText(car4.toString());
+						labelMotorcycle.pack();
+					}
+
+					@Override
+					public void widgetDefaultSelected(SelectionEvent arg0) {
+					}
+				});
+				
+				// end of label4 - Motorcycle
+				
+				buttonLorry.pack();
+				buttonCar.pack();
+				buttonBus.pack();
+				buttonMotorcycle.pack();
+	}
+	
+	private void setMenu(final Shell shell, final Display display) {
 		Menu menuBar, fileMenu;
 
 		MenuItem fileMenuHeader;
 
 		MenuItem fileAddCarItem, fileDelCarItem, fileExitItem;
 
-		Label label;
+		final Label label;
 
 		label = new Label(shell, SWT.CENTER);
 		label.setBounds(shell.getClientArea());
@@ -210,42 +201,43 @@ public class ParkingHouseGUI {
 		fileExitItem = new MenuItem(fileMenu, SWT.PUSH);
 		fileExitItem.setText("&Exit");
 
-		fileAddCarItem.addSelectionListener(new fileAddCarItemListener());
-		fileDelCarItem.addSelectionListener(new fileDelCarItemListener());
-		fileExitItem.addSelectionListener(new fileExitItemListener());
+		fileAddCarItem.addSelectionListener(new SelectionListener() {
 
-		class fileExitItemListener implements SelectionListener {
-			public void widgetSelected(SelectionEvent event) {
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				System.out.println("add car");
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+		fileDelCarItem.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				System.out.println("delete car");
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+		fileExitItem.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
 				shell.close();
 				display.dispose();
+				System.out.println("exit");
 			}
 
-			public void widgetDefaultSelected(SelectionEvent event) {
-				shell.close();
-				display.dispose();
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
 			}
-		}
+		});
 
-		class fileAddCarItemListener implements SelectionListener {
-			public void widgetSelected(SelectionEvent event) {
-				label.setText("Add some new car");
-			}
-
-			public void widgetDefaultSelected(SelectionEvent event) {
-				label.setText("Add some new car");
-			}
-		}
-
-		class fileDelCarItemListener implements SelectionListener {
-			public void widgetSelected(SelectionEvent event) {
-				label.setText("Delete cars that left");
-			}
-
-			public void widgetDefaultSelected(SelectionEvent event) {
-				label.setText("Delete cars that left");
-			}
-		}
-
+		shell.setMenuBar(menuBar);
 	}
 
 }

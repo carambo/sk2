@@ -5,9 +5,7 @@ public class Lorry extends Vehicle {
 
 	public Lorry(DrivingLicenseType dlt, int numberOfWheels,
 			String licensePlate, String type, int maxLoad) {
-		super(dlt, numberOfWheels, licensePlate, type); // here were 2 licensePlates,now
-												// one is deleted and replaced
-												// by type-first bug fixed
+		super(dlt, numberOfWheels, licensePlate, type);
 		this.maxLoad = maxLoad;
 	}
 
