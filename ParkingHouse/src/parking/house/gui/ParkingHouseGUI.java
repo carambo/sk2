@@ -269,13 +269,13 @@ public class ParkingHouseGUI {
 		Bus bus1 = new Bus(DrivingLicenseType.D, 4, "BA554NA", "Karosa", 70);
 
 		int count = 10;
-		for (int i = 0; i < count; i++) {
+		
 			TableItem item = new TableItem(table, SWT.NONE);
 
 			
 			
 			Button buttonAssVal = new Button(shell, SWT.PUSH);
-			buttonAssVal.setText("Assign values to table");
+			buttonAssVal.setText("Assign Bus values to table");
 			buttonAssVal.addSelectionListener(new SelectionListener() {
 
 				@Override
@@ -294,7 +294,7 @@ public class ParkingHouseGUI {
 				}
 			});
 			
-		}
+		
 		for (int i = 0; i < titles.length; i++) {
 			table.getColumn(i).pack();
 		}
