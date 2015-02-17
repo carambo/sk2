@@ -48,6 +48,7 @@ public class ParkingHouseGUI {
 		setTestButtons(shell, display);
 		setMenu(shell, display);
 		setTab(shell, display);
+		
 
 
 		// end of menu
@@ -257,9 +258,9 @@ public class ParkingHouseGUI {
 		GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
 		data.heightHint = 200;
 		table.setLayoutData(data);
-		String[] titles = { "ID" /* 1 */, "DLT" /* 2 */,
-				"Number of wheels"/* 3 */, "License Plate"/* 4 */,
-				"Type"/* 5 */, "Number of seats (bus)"/* 6 */};
+		String[] titles = { "ID" /* 0 */, "DLT" /* 1 */,
+				"Number of wheels"/* 2 */, "License Plate"/* 3 */,
+				"Type"/* 4 */, "Number of seats (bus)"/* 5 */};
 		for (int i = 0; i < titles.length; i++) {
 			TableColumn column = new TableColumn(table, SWT.NONE);
 			column.setText(titles[i]);
@@ -271,13 +272,28 @@ public class ParkingHouseGUI {
 		for (int i = 0; i < count; i++) {
 			TableItem item = new TableItem(table, SWT.NONE);
 
-			item.setText(0, "ID"); // here I need to make some for to make new
-									// ID for each new car added
-			item.setText(1, "" + bus1.getDlt());
-			item.setText(2, "" + bus1.getNumberOfWheels());
-			item.setText(3, "" + bus1.getLicensePlate());
-			item.setText(4, "" + bus1.getType());
-			item.setText(5, "" + bus1.busSeats);
+			
+			
+			Button buttonAssVal = new Button(shell, SWT.PUSH);
+			buttonAssVal.setText("Assign values to table");
+			buttonAssVal.addSelectionListener(new SelectionListener() {
+
+				@Override
+				public void widgetSelected(SelectionEvent arg0) {
+					item.setText(0, "ID"); // here I need to make some for to make new
+					// ID for each new car added
+					item.setText(1, "" + bus1.getDlt());
+					item.setText(2, "" + bus1.getNumberOfWheels());
+					item.setText(3, "" + bus1.getLicensePlate());
+					item.setText(4, "" + bus1.getType());
+					item.setText(5, "" + bus1.busSeats);
+				}
+
+				@Override
+				public void widgetDefaultSelected(SelectionEvent arg0) {
+				}
+			});
+			
 		}
 		for (int i = 0; i < titles.length; i++) {
 			table.getColumn(i).pack();
@@ -286,5 +302,8 @@ public class ParkingHouseGUI {
 	}
 
 	// tab
+	
+	
+	
 
 }
