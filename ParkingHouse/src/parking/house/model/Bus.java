@@ -1,12 +1,13 @@
 package parking.house.model;
 
 public class Bus extends Vehicle {
-	int busSeats; // number of seats in the bus
+	public int busSeats; // number of seats in the bus // made public
 
 	public Bus(DrivingLicenseType dlt, int numberOfWheels, String licensePlate,
 			String type, int busSeats) {
 		super(dlt, numberOfWheels, licensePlate, type);
 		this.busSeats = busSeats;
+
 	}
 
 	@Override
