@@ -48,8 +48,6 @@ public class ParkingHouseGUI {
 		setTestButtons(shell, display);
 		setMenu(shell, display);
 		setTab(shell, display);
-		
-
 
 		// end of menu
 
@@ -250,7 +248,6 @@ public class ParkingHouseGUI {
 
 	private void setTab(final Shell shell, final Display diplay) {
 
-		
 		Table table = new Table(shell, SWT.MULTI | SWT.BORDER
 				| SWT.FULL_SELECTION);
 		table.setLinesVisible(true);
@@ -268,42 +265,35 @@ public class ParkingHouseGUI {
 
 		Bus bus1 = new Bus(DrivingLicenseType.D, 4, "BA554NA", "Karosa", 70);
 
-		int count = 10;
-		
-			TableItem item = new TableItem(table, SWT.NONE);
+		Button assVal = new Button(shell, SWT.PUSH);
+		assVal.setText("Assign Bus values to table");
+		assVal.addSelectionListener(new SelectionListener() {
 
-			
-			
-			Button buttonAssVal = new Button(shell, SWT.PUSH);
-			buttonAssVal.setText("Assign Bus values to table");
-			buttonAssVal.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				TableItem item = new TableItem(table, SWT.NONE);
 
-				@Override
-				public void widgetSelected(SelectionEvent arg0) {
-					item.setText(0, "ID"); // here I need to make some for to make new
-					// ID for each new car added
-					item.setText(1, "" + bus1.getDlt());
-					item.setText(2, "" + bus1.getNumberOfWheels());
-					item.setText(3, "" + bus1.getLicensePlate());
-					item.setText(4, "" + bus1.getType());
-					item.setText(5, "" + bus1.busSeats);
-				}
+				item.setText(0, "ID"); // here I need to make some for to make
+										// new
+				// ID for each new car added
+				item.setText(1, "" + bus1.getDlt());
+				item.setText(2, "" + bus1.getNumberOfWheels());
+				item.setText(3, "" + bus1.getLicensePlate());
+				item.setText(4, "" + bus1.getType());
+				item.setText(5, "" + bus1.busSeats);
+			}
 
-				@Override
-				public void widgetDefaultSelected(SelectionEvent arg0) {
-				}
-			});
-			
-		
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+
 		for (int i = 0; i < titles.length; i++) {
 			table.getColumn(i).pack();
 		}
-		
+
 	}
 
 	// tab
-	
-	
-	
 
 }
