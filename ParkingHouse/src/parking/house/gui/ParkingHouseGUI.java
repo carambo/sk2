@@ -257,7 +257,7 @@ public class ParkingHouseGUI {
 		table.setLayoutData(data);
 		String[] titles = { "ID" /* 0 */, "DLT" /* 1 */,
 				"Number of wheels"/* 2 */, "License Plate"/* 3 */,
-				"Type"/* 4 */, "Number of seats (bus)"/* 5 */};
+				"Type"/* 4 */, "number of seats, horse power, etc (this will be edited)"/* 5 */};
 		for (int i = 0; i < titles.length; i++) {
 			TableColumn column = new TableColumn(table, SWT.NONE);
 			column.setText(titles[i]);
