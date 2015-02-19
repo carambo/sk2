@@ -1,7 +1,7 @@
 package parking.house.model;
 
 public class Motorcycle extends Vehicle {
-	int horsepower;
+	public int horsepower;
 
 	public Motorcycle(DrivingLicenseType dlt, int numberOfWheels,
 			String licensePlate, String type, int horsepower) {

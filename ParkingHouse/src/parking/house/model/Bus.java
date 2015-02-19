@@ -1,7 +1,7 @@
 package parking.house.model;
 
 public class Bus extends Vehicle {
-	public int busSeats; // number of seats in the bus // made public
+	public int busSeats; // number of seats in the bus // made public to be seen in ParkingHouseGUI
 
 	public Bus(DrivingLicenseType dlt, int numberOfWheels, String licensePlate,
 			String type, int busSeats) {

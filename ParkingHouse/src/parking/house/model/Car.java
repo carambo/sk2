@@ -1,7 +1,7 @@
 package parking.house.model;
 
 public class Car extends Vehicle {
-	int passengers;
+	public int passengers;
 
 	public Car(DrivingLicenseType dlt, int numberOfWheels, String licensePlate,
 			String type, int pocetOsob) {
@@ -18,7 +18,7 @@ public class Car extends Vehicle {
 				+ getLicensePlate() + ", getType()=" + getType() + "]";
 	}
 
-	// teraz zabzpecit aby sa mi to vypisalo v okne cez GUI
+	
 	
 
 	

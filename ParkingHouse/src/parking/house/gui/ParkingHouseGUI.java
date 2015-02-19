@@ -257,17 +257,21 @@ public class ParkingHouseGUI {
 		table.setLayoutData(data);
 		String[] titles = { "ID" /* 0 */, "DLT" /* 1 */,
 				"Number of wheels"/* 2 */, "License Plate"/* 3 */,
-				"Type"/* 4 */, "number of seats, horse power, etc (this will be edited)"/* 5 */};
+				"Type"/* 4 */,
+				"number of seats, horse power, etc (this will be edited)"/* 5 */};
 		for (int i = 0; i < titles.length; i++) {
 			TableColumn column = new TableColumn(table, SWT.NONE);
 			column.setText(titles[i]);
 		}
+		
+		
 
+		// begin of bus
 		Bus bus1 = new Bus(DrivingLicenseType.D, 4, "BA554NA", "Karosa", 70);
 
-		Button assVal = new Button(shell, SWT.PUSH);
-		assVal.setText("Assign Bus values to table");
-		assVal.addSelectionListener(new SelectionListener() {
+		Button assValBus = new Button(shell, SWT.PUSH);
+		assValBus.setText("Assign Bus values to table");
+		assValBus.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
@@ -288,6 +292,94 @@ public class ParkingHouseGUI {
 			}
 		});
 
+		// end of bus
+
+		// begin of lorry
+
+		Lorry lorry1 = new Lorry(DrivingLicenseType.C, 6, "TN555ME", "Iveco",
+				400);
+
+		Button assValLor = new Button(shell, SWT.PUSH);
+		assValLor.setText("Assign Lorry values to table");
+		assValLor.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+
+				TableItem item = new TableItem(table, SWT.NONE);
+
+				item.setText(0, "ID");
+				item.setText(1, "" + lorry1.getDlt());
+				item.setText(2, "" + lorry1.getNumberOfWheels());
+				item.setText(3, "" + lorry1.getLicensePlate());
+				item.setText(4, "" + lorry1.getType());
+				item.setText(5, "" + lorry1.maxLoad);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+
+		// end of lorry
+
+		// begin of car
+
+		Car car1 = new Car(DrivingLicenseType.B, 4, "KE777AV", "Mercedes", 3);
+
+		Button assValCar = new Button(shell, SWT.PUSH);
+		assValCar.setText("Assign Car values to table");
+		assValCar.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+
+				TableItem item = new TableItem(table, SWT.NONE);
+
+				item.setText(0, "ID");
+				item.setText(1, "" + car1.getDlt());
+				item.setText(2, "" + car1.getNumberOfWheels());
+				item.setText(3, "" + car1.getLicensePlate());
+				item.setText(4, "" + car1.getType());
+				item.setText(5, "" + car1.passengers);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+
+		// end of car
+		
+		// begin of motorcycle
+		
+		Motorcycle motorcycle1 = new Motorcycle(DrivingLicenseType.A, 2, "BA888CC", "Honda", 150);
+
+		Button assValMot = new Button(shell, SWT.PUSH);
+		assValMot.setText("Assign Motorcycle values to table");
+		assValMot.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+
+				TableItem item = new TableItem(table, SWT.NONE);
+
+				item.setText(0, "ID");
+				item.setText(1, "" + motorcycle1.getDlt());
+				item.setText(2, "" + motorcycle1.getNumberOfWheels());
+				item.setText(3, "" + motorcycle1.getLicensePlate());
+				item.setText(4, "" + motorcycle1.getType());
+				item.setText(5, "" + motorcycle1.horsepower);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+		
+		// end of motorcycle
+		
+		
 		for (int i = 0; i < titles.length; i++) {
 			table.getColumn(i).pack();
 		}
@@ -295,5 +387,7 @@ public class ParkingHouseGUI {
 	}
 
 	// tab
+	
+	
 
 }
