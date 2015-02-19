@@ -391,6 +391,28 @@ public class ParkingHouseGUI {
 		combo.setItems (new String [] {"Bus", "Lorry", "Car", "Motorcycle"});
 		Rectangle clientArea = shell.getClientArea ();
 		combo.setBounds (clientArea.x, clientArea.y, 400, 400);
+		combo.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				
+				TableItem item = new TableItem(table, SWT.NONE);
+
+				
+				item.setText(0, "ID");
+				item.setText(1, "" + motorcycle1.getDlt());
+				item.setText(2, "" + motorcycle1.getNumberOfWheels());
+				item.setText(3, "" + motorcycle1.getLicensePlate());
+				item.setText(4, "" + motorcycle1.getType());
+				item.setText(5, "" + motorcycle1.horsepower);
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				
+				
+			}
+		}); 
 		
 		// end of combobox
 		
