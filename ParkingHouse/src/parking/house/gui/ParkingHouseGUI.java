@@ -8,6 +8,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
@@ -23,6 +24,11 @@ import parking.house.model.Car;
 import parking.house.model.DrivingLicenseType;
 import parking.house.model.Lorry;
 import parking.house.model.Motorcycle;
+
+import org.eclipse.swt.*;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.widgets.*;
+
 
 public class ParkingHouseGUI {
 
@@ -379,6 +385,34 @@ public class ParkingHouseGUI {
 		
 		// end of motorcycle
 		
+		// combobox
+		
+		Combo combo = new Combo (shell, SWT.READ_ONLY);
+		combo.setItems (new String [] {"Bus", "Lorry", "Car", "Motorcycle"});
+		Rectangle clientArea = shell.getClientArea ();
+		combo.setBounds (clientArea.x, clientArea.y, 400, 400);
+		
+		// end of combobox
+		
+		Button okButton = new Button(shell, SWT.PUSH);
+		okButton.setText("OK");
+		okButton.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				
+				// sem som chcel dat podmienku, ked bude v comboboxe napisane Bus, tak po stlaceni OK buttonu sa priradia
+				// do tabulky hodnoty z Bus atd
+				
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				
+				
+			}
+		});
+		
 		
 		for (int i = 0; i < titles.length; i++) {
 			table.getColumn(i).pack();
@@ -386,7 +420,11 @@ public class ParkingHouseGUI {
 
 	}
 
-	// tab
+	// end of tab
+	
+	// dat vsetkoy tieto buttony do spolocnej metody, nie tam kde je tab. pri tych 
+		// prvych buttonoch mam na konic napisany .pack(); spytat sa doda ci to bude treba
+		// spravit aj teraz
 	
 	
 
