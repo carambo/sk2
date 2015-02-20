@@ -5,6 +5,7 @@ import java.util.Set;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Button;
@@ -29,13 +30,7 @@ import org.eclipse.swt.*;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.*;
 
-
 public class ParkingHouseGUI {
-
-	private Text labelLorry;
-	private Text labelCar;
-	private Text labelBus;
-	private Text labelMotorcycle;
 
 	public ParkingHouseGUI() {
 		createGUI();
@@ -49,13 +44,8 @@ public class ParkingHouseGUI {
 		gridLayout.numColumns = 1;
 		shell.setLayout(gridLayout);
 
-		// begin of menu
-
-		setTestButtons(shell, display);
 		setMenu(shell, display);
 		setTab(shell, display);
-
-		// end of menu
 
 		shell.pack();
 		shell.open();
@@ -65,122 +55,6 @@ public class ParkingHouseGUI {
 				display.sleep();
 		}
 		display.dispose();
-	}
-
-	private void setTestButtons(Shell shell, Display display) {
-		// label1 - Lorry
-
-		labelLorry = new Text(shell, SWT.PUSH); // label mozem zmenit napr na
-		// text -
-		// https://www.eclipse.org/swt/widgets/
-		labelLorry.setText("Lorry");
-		labelLorry.setSize(400, 30);
-		labelLorry.pack();
-
-		Button buttonLorry = new Button(shell, SWT.PUSH);
-		buttonLorry.setText("Open Lorries");
-		buttonLorry.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				Lorry car1 = new Lorry(DrivingLicenseType.D, 4, "BA882AB",
-						"Scania", 420);
-				labelLorry.setText(car1.toString());
-				labelLorry.pack();
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-		});
-
-		// end of label1 - Lorry
-
-		// label2 - Car
-
-		labelCar = new Text(shell, SWT.PUSH); // I forgot to initialized label2
-												// first time
-		labelCar.setText("Car");
-		labelCar.setSize(400, 30);
-		labelCar.pack();
-
-		Button buttonCar = new Button(shell, SWT.PUSH);
-		buttonCar.setText("Open Cars");
-		buttonCar.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				Car car2 = new Car(DrivingLicenseType.B, 4, "BA255AA", "BMW", 3);
-				labelCar.setText(car2.toString());
-				labelCar.pack();
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-
-		});
-
-		// end of label2 - Car
-
-		// label3 - Bus
-
-		labelBus = new Text(shell, SWT.PUSH);
-
-		labelBus.setText("Bus");
-		labelBus.setSize(400, 30);
-		labelBus.pack();
-
-		Button buttonBus = new Button(shell, SWT.PUSH);
-		buttonBus.setText("Open Bus");
-		buttonBus.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				Bus car3 = new Bus(DrivingLicenseType.D, 4, "BA554NA",
-						"Karosa", 70);
-				labelBus.setText(car3.toString());
-				labelBus.pack();
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-		});
-
-		// end of label3 - Bus
-
-		// label4 - Motorcycle
-
-		labelMotorcycle = new Text(shell, SWT.PUSH);
-
-		labelMotorcycle.setText("Motorcycle");
-		labelMotorcycle.setSize(400, 30);
-		labelBus.pack();
-
-		Button buttonMotorcycle = new Button(shell, SWT.PUSH);
-		buttonMotorcycle.setText("Open Motorcycle");
-		buttonMotorcycle.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				Motorcycle car4 = new Motorcycle(DrivingLicenseType.A, 2,
-						"BA112MN", "Honda", 140);
-				labelMotorcycle.setText(car4.toString());
-				labelMotorcycle.pack();
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-		});
-
-		// end of label4 - Motorcycle
-
-		buttonLorry.pack();
-		buttonCar.pack();
-		buttonBus.pack();
-		buttonMotorcycle.pack();
 	}
 
 	private void setMenu(final Shell shell, final Display display) {
@@ -269,173 +143,77 @@ public class ParkingHouseGUI {
 			TableColumn column = new TableColumn(table, SWT.NONE);
 			column.setText(titles[i]);
 		}
+
+		// creating objects of all types of vehicle
 		
+		Bus bus1 = new Bus(DrivingLicenseType.D, 4, "BA421IO", "Karosa", 70);
+		Lorry lorry1 = new Lorry(DrivingLicenseType.C, 6, "TN214OO", "Iveco", 800);
+		Car car1 = new Car(DrivingLicenseType.B, 4, "MY882AA","BMW", 5);
+		Motorcycle motorcycle1 = new Motorcycle(DrivingLicenseType.A, 2, "TT587MM", "Honda", 150);
+		
+		// end of creating objects of all types of vehicle
 		
 
-		// begin of bus
-		Bus bus1 = new Bus(DrivingLicenseType.D, 4, "BA554NA", "Karosa", 70);
-
-		Button assValBus = new Button(shell, SWT.PUSH);
-		assValBus.setText("Assign Bus values to table");
-		assValBus.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				TableItem item = new TableItem(table, SWT.NONE);
-
-				item.setText(0, "ID"); // here I need to make some for to make
-										// new
-				// ID for each new car added
-				item.setText(1, "" + bus1.getDlt());
-				item.setText(2, "" + bus1.getNumberOfWheels());
-				item.setText(3, "" + bus1.getLicensePlate());
-				item.setText(4, "" + bus1.getType());
-				item.setText(5, "" + bus1.busSeats);
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-		});
-
-		// end of bus
-
-		// begin of lorry
-
-		Lorry lorry1 = new Lorry(DrivingLicenseType.C, 6, "TN555ME", "Iveco",
-				400);
-
-		Button assValLor = new Button(shell, SWT.PUSH);
-		assValLor.setText("Assign Lorry values to table");
-		assValLor.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-
-				TableItem item = new TableItem(table, SWT.NONE);
-
-				item.setText(0, "ID");
-				item.setText(1, "" + lorry1.getDlt());
-				item.setText(2, "" + lorry1.getNumberOfWheels());
-				item.setText(3, "" + lorry1.getLicensePlate());
-				item.setText(4, "" + lorry1.getType());
-				item.setText(5, "" + lorry1.maxLoad);
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-		});
-
-		// end of lorry
-
-		// begin of car
-
-		Car car1 = new Car(DrivingLicenseType.B, 4, "KE777AV", "Mercedes", 3);
-
-		Button assValCar = new Button(shell, SWT.PUSH);
-		assValCar.setText("Assign Car values to table");
-		assValCar.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-
-				TableItem item = new TableItem(table, SWT.NONE);
-
-				item.setText(0, "ID");
-				item.setText(1, "" + car1.getDlt());
-				item.setText(2, "" + car1.getNumberOfWheels());
-				item.setText(3, "" + car1.getLicensePlate());
-				item.setText(4, "" + car1.getType());
-				item.setText(5, "" + car1.passengers);
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-		});
-
-		// end of car
-		
-		// begin of motorcycle
-		
-		Motorcycle motorcycle1 = new Motorcycle(DrivingLicenseType.A, 2, "BA888CC", "Honda", 150);
-
-		Button assValMot = new Button(shell, SWT.PUSH);
-		assValMot.setText("Assign Motorcycle values to table");
-		assValMot.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-
-				TableItem item = new TableItem(table, SWT.NONE);
-
-				item.setText(0, "ID");
-				item.setText(1, "" + motorcycle1.getDlt());
-				item.setText(2, "" + motorcycle1.getNumberOfWheels());
-				item.setText(3, "" + motorcycle1.getLicensePlate());
-				item.setText(4, "" + motorcycle1.getType());
-				item.setText(5, "" + motorcycle1.horsepower);
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-		});
-		
-		// end of motorcycle
-		
 		// combobox
-		
-		Combo combo = new Combo (shell, SWT.READ_ONLY);
-		combo.setItems (new String [] {"Bus", "Lorry", "Car", "Motorcycle"});
-		Rectangle clientArea = shell.getClientArea ();
-		combo.setBounds (clientArea.x, clientArea.y, 400, 400);
-		combo.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				
-				TableItem item = new TableItem(table, SWT.NONE);
 
-				
-				item.setText(0, "ID");
-				item.setText(1, "" + motorcycle1.getDlt());
-				item.setText(2, "" + motorcycle1.getNumberOfWheels());
-				item.setText(3, "" + motorcycle1.getLicensePlate());
-				item.setText(4, "" + motorcycle1.getType());
-				item.setText(5, "" + motorcycle1.horsepower);
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-				
-				
-			}
-		}); 
-		
+		Combo combo = new Combo(shell, SWT.READ_ONLY);
+		combo.setItems(new String[] { "Bus", "Lorry", "Car", "Motorcycle" });
+		Rectangle clientArea = shell.getClientArea();
+		combo.setBounds(clientArea.x, clientArea.y, 400, 400);
+
 		// end of combobox
-		
+
 		Button okButton = new Button(shell, SWT.PUSH);
 		okButton.setText("OK");
 		okButton.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				
-				// sem som chcel dat podmienku, ked bude v comboboxe napisane Bus, tak po stlaceni OK buttonu sa priradia
-				// do tabulky hodnoty z Bus atd
-				
+
+				if (combo.getText().equals("Bus")) {
+					TableItem item = new TableItem(table, SWT.NONE);
+					item.setText(0, "ID");
+					item.setText(1, "" + bus1.getDlt());
+					item.setText(2, "" + bus1.getNumberOfWheels());
+					item.setText(3, "" + bus1.getLicensePlate());
+					item.setText(4, "" + bus1.getType());
+					item.setText(5, "" + bus1.busSeats);
+				} else if (combo.getText().equals("Lorry")) {
+					TableItem item = new TableItem(table, SWT.NONE);
+					item.setText(0, "ID");
+					item.setText(1, "" + lorry1.getDlt());
+					item.setText(2, "" + lorry1.getNumberOfWheels());
+					item.setText(3, "" + lorry1.getLicensePlate());
+					item.setText(4, "" + lorry1.getType());
+					item.setText(5, "" + lorry1.maxLoad);
+				} else if (combo.getText().equals("Car")) {
+					TableItem item = new TableItem(table, SWT.NONE);
+					item.setText(0, "ID");
+					item.setText(1, "" + car1.getDlt());
+					item.setText(2, "" + car1.getNumberOfWheels());
+					item.setText(3, "" + car1.getLicensePlate());
+					item.setText(4, "" + car1.getType());
+					item.setText(5, "" + car1.passengers);
+				} else if (combo.getText().equals("Motorcycle")) {
+					TableItem item = new TableItem(table, SWT.NONE);
+					item.setText(0, "ID");
+					item.setText(1, "" + motorcycle1.getDlt());
+					item.setText(2, "" + motorcycle1.getNumberOfWheels());
+					item.setText(3, "" + motorcycle1.getLicensePlate());
+					item.setText(4, "" + motorcycle1.getType());
+					item.setText(5, "" + motorcycle1.horsepower);
+				} else {
+					// empty
+				}
+
 			}
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
-				
-				
+
 			}
 		});
-		
-		
+
 		for (int i = 0; i < titles.length; i++) {
 			table.getColumn(i).pack();
 		}
@@ -443,11 +221,11 @@ public class ParkingHouseGUI {
 	}
 
 	// end of tab
-	
-	// dat vsetkoy tieto buttony do spolocnej metody, nie tam kde je tab. pri tych 
-		// prvych buttonoch mam na konic napisany .pack(); spytat sa doda ci to bude treba
-		// spravit aj teraz
-	
-	
+
+	// dat vsetkoy tieto buttony do spolocnej metody, nie tam kde je tab. pri
+	// tych
+	// prvych buttonoch mam na konic napisany .pack(); spytat sa doda ci to bude
+	// treba
+	// spravit aj teraz
 
 }
