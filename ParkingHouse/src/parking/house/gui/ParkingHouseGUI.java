@@ -57,6 +57,18 @@ public class ParkingHouseGUI {
 		display.dispose();
 	}
 
+	// creating objects of all types of vehicle
+
+	Bus bus1 = new Bus(DrivingLicenseType.D, 4, "BA421IO", "Karosa", 70);
+	Lorry lorry1 = new Lorry(DrivingLicenseType.C, 6, "TN214OO", "Iveco", 800);
+	Car car1 = new Car(DrivingLicenseType.B, 4, "MY882AA", "BMW", 5);
+	Motorcycle motorcycle1 = new Motorcycle(DrivingLicenseType.A, 2, "TT587MM",
+			"Honda", 150);
+
+	// end of creating objects of all types of vehicle
+
+	// begin of menu
+
 	private void setMenu(final Shell shell, final Display display) {
 		Menu menuBar, fileMenu;
 
@@ -122,9 +134,12 @@ public class ParkingHouseGUI {
 		});
 
 		shell.setMenuBar(menuBar);
+
 	}
 
-	// tab
+	// end of menu
+
+	// begin of tab
 
 	private void setTab(final Shell shell, final Display diplay) {
 
@@ -144,15 +159,9 @@ public class ParkingHouseGUI {
 			column.setText(titles[i]);
 		}
 
-		// creating objects of all types of vehicle
-		
-		Bus bus1 = new Bus(DrivingLicenseType.D, 4, "BA421IO", "Karosa", 70);
-		Lorry lorry1 = new Lorry(DrivingLicenseType.C, 6, "TN214OO", "Iveco", 800);
-		Car car1 = new Car(DrivingLicenseType.B, 4, "MY882AA","BMW", 5);
-		Motorcycle motorcycle1 = new Motorcycle(DrivingLicenseType.A, 2, "TT587MM", "Honda", 150);
-		
-		// end of creating objects of all types of vehicle
-		
+		for (int i = 0; i < titles.length; i++) {
+			table.getColumn(i).pack();
+		}
 
 		// combobox
 
@@ -163,6 +172,7 @@ public class ParkingHouseGUI {
 
 		// end of combobox
 
+		// begin of ok button
 		Button okButton = new Button(shell, SWT.PUSH);
 		okButton.setText("OK");
 		okButton.addSelectionListener(new SelectionListener() {
@@ -214,9 +224,7 @@ public class ParkingHouseGUI {
 			}
 		});
 
-		for (int i = 0; i < titles.length; i++) {
-			table.getColumn(i).pack();
-		}
+		// end of ok button
 
 	}
 
