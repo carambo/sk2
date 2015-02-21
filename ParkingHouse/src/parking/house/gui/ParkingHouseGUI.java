@@ -32,6 +32,30 @@ import org.eclipse.swt.widgets.*;
 
 public class ParkingHouseGUI {
 
+	// BEGIN OF VARIABLES/OBJECTS/LABELS INITIALIZATION
+	// creating objects of all types of vehicle
+
+	Bus bus1 = new Bus(DrivingLicenseType.D, 4, "BA421IO", "Karosa", 70);
+	Lorry lorry1 = new Lorry(DrivingLicenseType.C, 6, "TN214OO", "Iveco", 800);
+	Car car1 = new Car(DrivingLicenseType.B, 4, "MY882AA", "BMW", 5);
+	Motorcycle motorcycle1 = new Motorcycle(DrivingLicenseType.A, 2, "TT587MM",
+			"Honda", 150);
+
+	// end of creating objects of all types of vehicle
+
+	// begin text labels
+
+	private Text labelvehicInTab;
+
+	// end text labels
+
+	// begin variables
+
+	int vehicInTab;
+
+	// end variables
+	// END OF VARIABLES/OBJECTS/LABELS INITIALIZATION
+
 	public ParkingHouseGUI() {
 		createGUI();
 	}
@@ -45,6 +69,7 @@ public class ParkingHouseGUI {
 		shell.setLayout(gridLayout);
 
 		setMenu(shell, display);
+		setLabelVehicInTab(shell, display);
 		setTab(shell, display);
 
 		shell.pack();
@@ -56,16 +81,6 @@ public class ParkingHouseGUI {
 		}
 		display.dispose();
 	}
-
-	// creating objects of all types of vehicle
-
-	Bus bus1 = new Bus(DrivingLicenseType.D, 4, "BA421IO", "Karosa", 70);
-	Lorry lorry1 = new Lorry(DrivingLicenseType.C, 6, "TN214OO", "Iveco", 800);
-	Car car1 = new Car(DrivingLicenseType.B, 4, "MY882AA", "BMW", 5);
-	Motorcycle motorcycle1 = new Motorcycle(DrivingLicenseType.A, 2, "TT587MM",
-			"Honda", 150);
-
-	// end of creating objects of all types of vehicle
 
 	// begin of menu
 
@@ -139,6 +154,18 @@ public class ParkingHouseGUI {
 
 	// end of menu
 
+	// label setLabelVehicleInItab
+	public void setLabelVehicInTab(final Shell shell, final Display display) {
+		labelvehicInTab = new Text(shell, SWT.PUSH);
+		labelvehicInTab.setText("Vehicles in tab: " + vehicInTab);
+		// labelvehicInTab.setSize(400, 30); - setSize is now not active,
+		// because when it is, I see only one-digit number, when it's not active
+		// I can see at least part of two-digit number
+		labelvehicInTab.pack();
+	}
+
+	// end of that label
+
 	// begin of tab
 
 	private void setTab(final Shell shell, final Display diplay) {
@@ -188,6 +215,7 @@ public class ParkingHouseGUI {
 					item.setText(3, "" + bus1.getLicensePlate());
 					item.setText(4, "" + bus1.getType());
 					item.setText(5, "" + bus1.busSeats);
+					labelvehicInTab.setText("Vehicles in tab: " + ++vehicInTab);
 				} else if (combo.getText().equals("Lorry")) {
 					TableItem item = new TableItem(table, SWT.NONE);
 					item.setText(0, "ID");
@@ -196,6 +224,7 @@ public class ParkingHouseGUI {
 					item.setText(3, "" + lorry1.getLicensePlate());
 					item.setText(4, "" + lorry1.getType());
 					item.setText(5, "" + lorry1.maxLoad);
+					labelvehicInTab.setText("Vehicles in tab:" + ++vehicInTab);
 				} else if (combo.getText().equals("Car")) {
 					TableItem item = new TableItem(table, SWT.NONE);
 					item.setText(0, "ID");
@@ -204,6 +233,7 @@ public class ParkingHouseGUI {
 					item.setText(3, "" + car1.getLicensePlate());
 					item.setText(4, "" + car1.getType());
 					item.setText(5, "" + car1.passengers);
+					labelvehicInTab.setText("Vehicles in tab:" + ++vehicInTab);
 				} else if (combo.getText().equals("Motorcycle")) {
 					TableItem item = new TableItem(table, SWT.NONE);
 					item.setText(0, "ID");
@@ -212,6 +242,7 @@ public class ParkingHouseGUI {
 					item.setText(3, "" + motorcycle1.getLicensePlate());
 					item.setText(4, "" + motorcycle1.getType());
 					item.setText(5, "" + motorcycle1.horsepower);
+					labelvehicInTab.setText("Vehicles in tab:" + ++vehicInTab);
 				} else {
 					// empty
 				}
