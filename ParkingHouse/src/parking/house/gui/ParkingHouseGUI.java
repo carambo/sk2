@@ -1,11 +1,8 @@
 package parking.house.gui;
 
-import java.util.Set;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Button;
@@ -26,9 +23,7 @@ import parking.house.model.DrivingLicenseType;
 import parking.house.model.Lorry;
 import parking.house.model.Motorcycle;
 
-import org.eclipse.swt.*;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.widgets.*;
 
 public class ParkingHouseGUI {
 
@@ -116,7 +111,8 @@ public class ParkingHouseGUI {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				System.out.println("add car");
+				AddVehicleDialog dialog = new AddVehicleDialog(shell);
+				dialog.open();
 			}
 
 			@Override
@@ -170,7 +166,7 @@ public class ParkingHouseGUI {
 
 	private void setTab(final Shell shell, final Display diplay) {
 
-		Table table = new Table(shell, SWT.MULTI | SWT.BORDER
+		final Table table = new Table(shell, SWT.MULTI | SWT.BORDER
 				| SWT.FULL_SELECTION);
 		table.setLinesVisible(true);
 		table.setHeaderVisible(true);
@@ -192,7 +188,7 @@ public class ParkingHouseGUI {
 
 		// combobox
 
-		Combo combo = new Combo(shell, SWT.READ_ONLY);
+		final Combo combo = new Combo(shell, SWT.READ_ONLY);
 		combo.setItems(new String[] { "Bus", "Lorry", "Car", "Motorcycle" });
 		Rectangle clientArea = shell.getClientArea();
 		combo.setBounds(clientArea.x, clientArea.y, 400, 400);
