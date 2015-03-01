@@ -16,41 +16,30 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-
 import parking.house.model.Bus;
 import parking.house.model.Car;
 import parking.house.model.DrivingLicenseType;
 import parking.house.model.Lorry;
 import parking.house.model.Motorcycle;
-
 import org.eclipse.swt.graphics.Rectangle;
 
 public class ParkingHouseGUI {
-
 	// BEGIN OF VARIABLES/OBJECTS/LABELS INITIALIZATION
 	// creating objects of all types of vehicle
-
 	Bus bus1 = new Bus(DrivingLicenseType.D, 4, "BA421IO", "Karosa", 70);
 	Lorry lorry1 = new Lorry(DrivingLicenseType.C, 6, "TN214OO", "Iveco", 800);
 	Car car1 = new Car(DrivingLicenseType.B, 4, "MY882AA", "BMW", 5);
 	Motorcycle motorcycle1 = new Motorcycle(DrivingLicenseType.A, 2, "TT587MM",
 			"Honda", 150);
-
 	// end of creating objects of all types of vehicle
-
 	// begin text labels
-
 	private Text labelvehicInTab;
-
 	// end text labels
-
 	// begin variables
-
 	int vehicInTab;
 
 	// end variables
 	// END OF VARIABLES/OBJECTS/LABELS INITIALIZATION
-
 	public ParkingHouseGUI() {
 		createGUI();
 	}
@@ -62,14 +51,11 @@ public class ParkingHouseGUI {
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
 		shell.setLayout(gridLayout);
-
 		setMenu(shell, display);
 		setLabelVehicInTab(shell, display);
 		setTab(shell, display);
-
 		shell.pack();
 		shell.open();
-
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch())
 				display.sleep();
@@ -78,37 +64,25 @@ public class ParkingHouseGUI {
 	}
 
 	// begin of menu
-
 	private void setMenu(final Shell shell, final Display display) {
 		Menu menuBar, fileMenu;
-
 		MenuItem fileMenuHeader;
-
 		MenuItem fileAddCarItem, fileDelCarItem, fileExitItem;
-
 		final Label label;
-
 		label = new Label(shell, SWT.CENTER);
 		label.setBounds(shell.getClientArea());
-
 		menuBar = new Menu(shell, SWT.BAR);
 		fileMenuHeader = new MenuItem(menuBar, SWT.CASCADE);
 		fileMenuHeader.setText("&File");
-
 		fileMenu = new Menu(shell, SWT.DROP_DOWN);
 		fileMenuHeader.setMenu(fileMenu);
-
 		fileAddCarItem = new MenuItem(fileMenu, SWT.PUSH);
 		fileAddCarItem.setText("&Add car");
-
 		fileDelCarItem = new MenuItem(fileMenu, SWT.PUSH);
 		fileDelCarItem.setText("&Delete car");
-
 		fileExitItem = new MenuItem(fileMenu, SWT.PUSH);
 		fileExitItem.setText("&Exit");
-
 		fileAddCarItem.addSelectionListener(new SelectionListener() {
-
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
 				AddVehicleDialog dialog = new AddVehicleDialog(shell);
@@ -120,7 +94,6 @@ public class ParkingHouseGUI {
 			}
 		});
 		fileDelCarItem.addSelectionListener(new SelectionListener() {
-
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
 				System.out.println("delete car");
@@ -131,7 +104,6 @@ public class ParkingHouseGUI {
 			}
 		});
 		fileExitItem.addSelectionListener(new SelectionListener() {
-
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
 				shell.close();
@@ -143,13 +115,10 @@ public class ParkingHouseGUI {
 			public void widgetDefaultSelected(SelectionEvent arg0) {
 			}
 		});
-
 		shell.setMenuBar(menuBar);
-
 	}
 
 	// end of menu
-
 	// label setLabelVehicleInItab
 	public void setLabelVehicInTab(final Shell shell, final Display display) {
 		labelvehicInTab = new Text(shell, SWT.PUSH);
@@ -161,11 +130,8 @@ public class ParkingHouseGUI {
 	}
 
 	// end of that label
-
 	// begin of tab
-
 	private void setTab(final Shell shell, final Display diplay) {
-
 		final Table table = new Table(shell, SWT.MULTI | SWT.BORDER
 				| SWT.FULL_SELECTION);
 		table.setLinesVisible(true);
@@ -181,28 +147,21 @@ public class ParkingHouseGUI {
 			TableColumn column = new TableColumn(table, SWT.NONE);
 			column.setText(titles[i]);
 		}
-
 		for (int i = 0; i < titles.length; i++) {
 			table.getColumn(i).pack();
 		}
-
 		// combobox
-
 		final Combo combo = new Combo(shell, SWT.READ_ONLY);
 		combo.setItems(new String[] { "Bus", "Lorry", "Car", "Motorcycle" });
 		Rectangle clientArea = shell.getClientArea();
 		combo.setBounds(clientArea.x, clientArea.y, 400, 400);
-
 		// end of combobox
-
 		// begin of ok button
 		Button okButton = new Button(shell, SWT.PUSH);
 		okButton.setText("OK");
 		okButton.addSelectionListener(new SelectionListener() {
-
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-
 				if (combo.getText().equals("Bus")) {
 					TableItem item = new TableItem(table, SWT.NONE);
 					item.setText(0, "ID");
@@ -242,25 +201,18 @@ public class ParkingHouseGUI {
 				} else {
 					// empty
 				}
-
 			}
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
-
 			}
 		});
-
 		// end of ok button
-
 	}
-
 	// end of tab
-
 	// dat vsetkoy tieto buttony do spolocnej metody, nie tam kde je tab. pri
 	// tych
 	// prvych buttonoch mam na konic napisany .pack(); spytat sa doda ci to bude
 	// treba
 	// spravit aj teraz
-
 }
