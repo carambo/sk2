@@ -13,15 +13,27 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.graphics.Point;
 
 import parking.house.model.Bus;
+import parking.house.model.Car;
 import parking.house.model.DrivingLicenseType;
+import parking.house.model.Lorry;
+import parking.house.model.Motorcycle;
+import parking.house.model.Vehicle;
 
 public class AddVehicleDialog extends Dialog {
+
+	private Vehicle vehicle;
+	private Shell shell;
+
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
 	public AddVehicleDialog(Shell parent) {
-		super(parent);
+		super(parent, SWT.APPLICATION_MODAL);
 	}
 
 	public void open() {
-		Shell shell = new Shell(getParent());
+		shell = new Shell(getParent(), getStyle());
 		shell.setText("Add vehicle");
 		shell.setMinimumSize(500, 200);
 		draw(shell);
@@ -48,49 +60,29 @@ public class AddVehicleDialog extends Dialog {
 		ok.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-
+				Vehicle v = null;
 				if (combo.getText().equals("Bus")) {
-					Bus bus1 = new Bus(DrivingLicenseType.D, 4, "BA421IO", "Karosa", 70);
-					TableItem item = new TableItem(table, SWT.NONE);
-					item.setText(0, "ID");
-					item.setText(1, "" + bus1.getDlt());
-					item.setText(2, "" + bus1.getNumberOfWheels());
-					item.setText(3, "" + bus1.getLicensePlate());
-					item.setText(4, "" + bus1.getType());
-					item.setText(5, "" + bus1.busSeats);
-					//labelvehicInTab.setText("Vehicles in tab: " + ++vehicInTab);
+					v = new Bus(DrivingLicenseType.D, 4, "BA421IO", "Karosa",
+							70);
+					// labelvehicInTab.setText("Vehicles in tab: " +
+					// ++vehicInTab);
 				} else if (combo.getText().equals("Lorry")) {
-					TableItem item = new TableItem(table, SWT.NONE);
-					item.setText(0, "ID");
-					item.setText(1, "" + lorry1.getDlt());
-					item.setText(2, "" + lorry1.getNumberOfWheels());
-					item.setText(3, "" + lorry1.getLicensePlate());
-					item.setText(4, "" + lorry1.getType());
-					item.setText(5, "" + lorry1.maxLoad);
-					//labelvehicInTab.setText("Vehicles in tab:" + ++vehicInTab);
+					v = new Lorry(DrivingLicenseType.C, 6, "BA700DD", "Scania",
+							5000);
+					// labelvehicInTab.setText("Vehicles in tab:" +
+					// ++vehicInTab);
 				} else if (combo.getText().equals("Car")) {
-					TableItem item = new TableItem(table, SWT.NONE);
-					item.setText(0, "ID");
-					item.setText(1, "" + car1.getDlt());
-					item.setText(2, "" + car1.getNumberOfWheels());
-					item.setText(3, "" + car1.getLicensePlate());
-					item.setText(4, "" + car1.getType());
-					item.setText(5, "" + car1.passengers);
-					//labelvehicInTab.setText("Vehicles in tab:" + ++vehicInTab);
+					v = new Car(DrivingLicenseType.B, 4, "BO777SS", "skoda", 2);
+					// labelvehicInTab.setText("Vehicles in tab:" +
+					// ++vehicInTab);
 				} else if (combo.getText().equals("Motorcycle")) {
-					TableItem item = new TableItem(table, SWT.NONE);
-					item.setText(0, "ID");
-					item.setText(1, "" + motorcycle1.getDlt());
-					item.setText(2, "" + motorcycle1.getNumberOfWheels());
-					item.setText(3, "" + motorcycle1.getLicensePlate());
-					item.setText(4, "" + motorcycle1.getType());
-					item.setText(5, "" + motorcycle1.horsepower);
-					//labelvehicInTab.setText("Vehicles in tab:" + ++vehicInTab);
+					v = new Motorcycle(DrivingLicenseType.A, 2, "MY000AA",
+							"honda", 200);
 				} else {
-					// empty
+					System.out.println("else");
 				}
-			
-				shell.dispose();
+				vehicle = v;
+				shell.close();
 			}
 
 			@Override

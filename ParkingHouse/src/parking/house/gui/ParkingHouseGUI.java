@@ -7,6 +7,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
@@ -16,11 +17,14 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
+
 import parking.house.model.Bus;
 import parking.house.model.Car;
 import parking.house.model.DrivingLicenseType;
 import parking.house.model.Lorry;
 import parking.house.model.Motorcycle;
+import parking.house.model.Vehicle;
+
 import org.eclipse.swt.graphics.Rectangle;
 
 public class ParkingHouseGUI {
@@ -87,6 +91,8 @@ public class ParkingHouseGUI {
 			public void widgetSelected(SelectionEvent arg0) {
 				AddVehicleDialog dialog = new AddVehicleDialog(shell);
 				dialog.open();
+				Vehicle v = dialog.getVehicle();
+				System.out.println("Choosed vehicle:" + v);
 			}
 
 			@Override
