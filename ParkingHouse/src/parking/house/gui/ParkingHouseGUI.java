@@ -38,6 +38,8 @@ public class ParkingHouseGUI {
 	private Text labelvehicInTab;
 
 	int vehicInTab;
+	
+	private Table table;
 
 	public ParkingHouseGUI() {
 		createGUI();
@@ -52,7 +54,7 @@ public class ParkingHouseGUI {
 		shell.setLayout(gridLayout);
 		setMenu(shell, display);
 		setLabelVehicInTab(shell, display);
-		// setTab(shell, display);
+		setTab(shell, display);
 		shell.pack();
 		shell.open();
 		while (!shell.isDisposed()) {
@@ -87,11 +89,12 @@ public class ParkingHouseGUI {
 				dialog.open();
 				Vehicle v = dialog.getVehicle();
 				System.out.println("Choosed vehicle:" + v);
-				TableItem item = new TableItem(table1, SWT.NONE);
-				item.setText(0, "ID");
-				item.setText(1, "" + v.getDlt());
-				item.setText(2, "" + v.getNumberOfWheels());
-				item.setText(3, "" + v.getLicensePlate());
+				SetValue(v);
+//				TableItem item = new TableItem(table1, SWT.NONE);
+//				item.setText(0, "ID");
+//				item.setText(1, "" + v.getDlt());
+//				item.setText(2, "" + v.getNumberOfWheels());
+//				item.setText(3, "" + v.getLicensePlate());
 
 			}
 
@@ -133,22 +136,18 @@ public class ParkingHouseGUI {
 		labelvehicInTab.pack();
 	}
 
-	public final Table table1 = new Table(shell, SWT.MULTI | SWT.BORDER
-			| SWT.FULL_SELECTION);
-
-	private void SetValue(final Shell shell, final Display display) {
-		TableItem item = new TableItem(table1, SWT.NONE);
+	private void SetValue(Vehicle v) {
+		TableItem item = new TableItem(table, SWT.NONE);
 		item.setText(0, "ID");
-		item.setText(1, "" + AddVehicleDialog.vehicle.getDlt());
-		item.setText(2, "" + AddVehicleDialog.vehicle.getNumberOfWheels());
-		item.setText(3, "" + AddVehicleDialog.vehicle.getLicensePlate());
-		item.setText(4, "" + AddVehicleDialog.vehicle.getType());
-		item.setText(5, "" + AddVehicleDialog.vehicle.busSeats);
+		item.setText(1, "" + v.getDlt());
+		item.setText(2, "" + v.getNumberOfWheels());
+		item.setText(3, "" + v.getLicensePlate());
+		item.setText(4, "" + v.getType());
  
 	}
 
 	private void setTab(final Shell shell, final Display diplay) {
-		final Table table = new Table(shell, SWT.MULTI | SWT.BORDER
+		table = new Table(shell, SWT.MULTI | SWT.BORDER
 				| SWT.FULL_SELECTION);
 		table.setLinesVisible(true);
 		table.setHeaderVisible(true);
