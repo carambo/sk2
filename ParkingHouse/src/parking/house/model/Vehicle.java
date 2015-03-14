@@ -2,28 +2,37 @@ package parking.house.model;
 
 public class Vehicle {
 
-	private long id;
+	private int id;
+	private int stayTime;
 	private DrivingLicenseType dlt;
-	private int numberOfWheels;
 	private String licensePlate;
-	private String type;
+	private String vehType;
+	private String vehColor;
 
-	public Vehicle(DrivingLicenseType dlt, int numberOfWheels,
-			String licensePlate, String type) {
+	public Vehicle(int id, DrivingLicenseType dlt, int stayTime,
+			String vehType, String vehColor, String licensePlate) {
+		this.id = id;
 		this.dlt = dlt;
-		this.numberOfWheels = numberOfWheels;
+		this.stayTime = stayTime;
+		this.vehType = vehType;
+		this.vehColor = vehColor;
 		this.licensePlate = licensePlate;
-		this.type = type;
 	}
 
-	// source to generate getters and setters
-	// ctrl shift f formatovanie
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getStayTime() {
+		return stayTime;
+	}
+
+	public void setStayTime(int stayTime) {
+		this.stayTime = stayTime;
 	}
 
 	public DrivingLicenseType getDlt() {
@@ -34,14 +43,6 @@ public class Vehicle {
 		this.dlt = dlt;
 	}
 
-	public int getNumberOfWheels() {
-		return numberOfWheels;
-	}
-
-	public void setNumberOfWheels(int numberOfWheels) {
-		this.numberOfWheels = numberOfWheels;
-	}
-
 	public String getLicensePlate() {
 		return licensePlate;
 	}
@@ -50,42 +51,20 @@ public class Vehicle {
 		this.licensePlate = licensePlate;
 	}
 
-	public String getType() {
-		return type;
+	public String getVehType() {
+		return vehType;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setVehType(String vehType) {
+		this.vehType = vehType;
 	}
 
-	@Override
-	public String toString() {
-		return "Vehicle [id=" + id + ", dlt=" + dlt + ", numberOfWheels="
-				+ numberOfWheels + ", licensePlate=" + licensePlate + ", type="
-				+ type + "]";
+	public String getVehColor() {
+		return vehColor;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((dlt == null) ? 0 : dlt.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result
-				+ ((licensePlate == null) ? 0 : licensePlate.hashCode());
-		result = prime * result + numberOfWheels;
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		return result;
+	public void setVehColor(String vehColor) {
+		this.vehColor = vehColor;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Vehicle) {
-			if (this.id == ((Vehicle) obj).getId())
-				return true;
-			else
-				return false;
-		}
-		return false;
-	}
 }

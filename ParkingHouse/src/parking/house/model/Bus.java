@@ -1,21 +1,11 @@
 package parking.house.model;
 
 public class Bus extends Vehicle {
-	public int busSeats; // number of seats in the bus // made public to be seen in ParkingHouseGUI
 
-	public Bus(DrivingLicenseType dlt, int numberOfWheels, String licensePlate,
-			String type, int busSeats) {
-		super(dlt, numberOfWheels, licensePlate, type);
-		this.busSeats = busSeats;
+	public Bus(int id, DrivingLicenseType dlt, int stayTime, String vehType,
+			String vehColor, String licensePlate) {
+		super(id, dlt, stayTime, vehType, vehColor, licensePlate);
 
-	}
-
-	@Override
-	public String toString() {
-		return "Bus [busSeats=" + busSeats + ", getId()=" + getId()
-				+ ", getDlt()=" + getDlt() + ", getNumberOfWheels()="
-				+ getNumberOfWheels() + ", getLicensePlate()="
-				+ getLicensePlate() + ", getType()=" + getType() + "]";
 	}
 
 }

@@ -1,23 +1,10 @@
 package parking.house.model;
 
 public class Motorcycle extends Vehicle {
-	public int horsepower;
 
-	public Motorcycle(DrivingLicenseType dlt, int numberOfWheels,
-			String licensePlate, String type, int horsepower) {
-		super(dlt, numberOfWheels, licensePlate, type);
-		this.horsepower = horsepower;
+	public Motorcycle(int id, DrivingLicenseType dlt, int stayTime,
+			String vehType, String vehColor, String licensePlate) {
+		super(id, dlt, stayTime, vehType, vehColor, licensePlate);
+
 	}
-
-	@Override
-	public String toString() {
-		return "Motorcycle [horsepower=" + horsepower + ", getId()=" + getId()
-				+ ", getDlt()=" + getDlt() + ", getNumberOfWheels()="
-				+ getNumberOfWheels() + ", getLicensePlate()="
-				+ getLicensePlate() + ", getType()=" + getType() + "]";
-	}
-
 }
-
-// spytat sa doda ci mam nastavit getters a setters pre premenne specificke pre
-// danu triedu/typ auta
