@@ -56,21 +56,41 @@ public class AddVehicleDialog extends Dialog {
 		Rectangle clientArea = shell.getClientArea();
 		combo.setBounds(clientArea.x, clientArea.y, 400, 400);
 
-		final Text t = new Text(shell, SWT.BORDER | SWT.MULTI);
-		t.setText("enter license plate");
-		t.setSize(200, 25);
-		t.setLocation(new Point(20, 40));
+		final Text dltInput = new Text(shell, SWT.BORDER | SWT.MULTI);
+		dltInput.setText("enter license plate");
+		dltInput.setSize(200, 25);
+		dltInput.setLocation(new Point(20, 40));
+		
+		final Text stayTimeInput = new Text(shell, SWT.BORDER | SWT.MULTI);
+		stayTimeInput.setText("enter stayTime"); // bude treba vyriesit toto tak, aby som dostaval typ int, pripadne ten sting budem musoiet potom na int zkonvertovat
+		stayTimeInput.setSize(200, 25); // vsetko to potom podavat do samostatnej metody, tj kazde toto okno bude v samostatnej metode a bolo by dobre aby v nej bolo aj pridadenie hpdnoty s inicializacoiu toho pomocneho stringu alebo int ako som mal teraz String s
+		stayTimeInput.setLocation(new Point(20, 80)); // a dat pozor na umiestnenie, teraz su tie suradnice vsade rovnake takze to bude na sebe, treba to pekne rozdelit a dat pod seba
+		// nastavit aby sa to dlt automaticky nastavilo podla typu vozidla, tj ked je vozidlo car tak dlt bude B, ked je vozidlo bus dlt bude D apod. 
+		final Text vehTypeInput = new Text(shell, SWT.BORDER | SWT.MULTI);
+		vehTypeInput.setText("enter vehcile type");
+		vehTypeInput.setSize(200, 25);
+		vehTypeInput.setLocation(new Point(20, 120));
+		
+		final Text vehColorInput = new Text(shell, SWT.BORDER | SWT.MULTI);
+		vehColorInput.setText("enter vehicle color");
+		vehColorInput.setSize(200, 25);
+		vehColorInput.setLocation(new Point(20, 160));
+		
+		final Text LicensePlateInput = new Text(shell, SWT.BORDER | SWT.MULTI);
+		LicensePlateInput.setText("enter license type");
+		LicensePlateInput.setSize(200, 25);
+		LicensePlateInput.setLocation(new Point(20, 200));
 		
 
 		Button ok = new Button(shell, SWT.PUSH);
-		ok.setLocation(new Point(20, 60)); // Point from swt.graphics -imported
+		ok.setLocation(new Point(20, 60)); 
 		ok.setText("ok");
 		ok.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
 				Vehicle v = null;
-				String s; // mam to, staci si to dostat hentak z gettextu a potom dam premennu normalne ako parameter
-				s = t.getText();
+				String s; 
+				s = dltInput.getText();
 				if (combo.getText().equals("Bus")) {
 					v = new Bus(1, DrivingLicenseType.D, 20, "Karosa", "Yellow",
 							s);
