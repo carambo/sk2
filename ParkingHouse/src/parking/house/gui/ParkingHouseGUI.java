@@ -83,12 +83,6 @@ public class ParkingHouseGUI {
 				Vehicle v = dialog.getVehicle();
 				System.out.println("Choosed vehicle:" + v);
 				SetValue(v);
-//				TableItem item = new TableItem(table1, SWT.NONE);
-//				item.setText(0, "ID");
-//				item.setText(1, "" + v.getDlt());
-//				item.setText(2, "" + v.getNumberOfWheels());
-//				item.setText(3, "" + v.getLicensePlate());
-
 			}
 
 			@Override
@@ -126,9 +120,10 @@ public class ParkingHouseGUI {
 		TableItem item = new TableItem(table, SWT.NONE);
 		item.setText(0, "ID");
 		item.setText(1, "" + v.getDlt());
-		item.setText(2, "" + v.getNumberOfWheels());
-		item.setText(3, "" + v.getLicensePlate());
-		item.setText(4, "" + v.getType());
+		item.setText(2, "" + v.getStayTime());
+		item.setText(3, "" + v.getVehType());
+		item.setText(4, "" + v.getVehColor());
+		item.setText(5, "" + v.getLicensePlate());
  
 	}
 
@@ -140,9 +135,9 @@ public class ParkingHouseGUI {
 		GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
 		data.heightHint = 200;
 		table.setLayoutData(data);
-		String[] titles = { "ID", "DLT", "Number of wheels", "License Plate",
-				"Type",
-				"number of seats, horse power, etc (this will be edited)"/* 5 */};
+		String[] titles = { "ID", "DLT", "Will stay for", "Type",
+				"Color",
+				"License Plate"};
 		for (int i = 0; i < titles.length; i++) {
 			TableColumn column = new TableColumn(table, SWT.NONE);
 			column.setText(titles[i]);
