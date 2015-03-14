@@ -29,15 +29,9 @@ import org.eclipse.swt.graphics.Rectangle;
 
 public class ParkingHouseGUI {
 
-	Bus bus1 = new Bus(DrivingLicenseType.D, 4, "BA421IO", "Karosa", 70);
-	Lorry lorry1 = new Lorry(DrivingLicenseType.C, 6, "TN214OO", "Iveco", 800);
-	Car car1 = new Car(DrivingLicenseType.B, 4, "MY882AA", "BMW", 5);
-	Motorcycle motorcycle1 = new Motorcycle(DrivingLicenseType.A, 2, "TT587MM",
-			"Honda", 150);
 
-	private Text labelvehicInTab;
 
-	int vehicInTab;
+	
 	
 	private Table table;
 
@@ -53,7 +47,6 @@ public class ParkingHouseGUI {
 		gridLayout.numColumns = 1;
 		shell.setLayout(gridLayout);
 		setMenu(shell, display);
-		setLabelVehicInTab(shell, display);
 		setTab(shell, display);
 		shell.pack();
 		shell.open();
@@ -127,14 +120,7 @@ public class ParkingHouseGUI {
 		shell.setMenuBar(menuBar);
 	}
 
-	public void setLabelVehicInTab(final Shell shell, final Display display) {
-		labelvehicInTab = new Text(shell, SWT.PUSH);
-		labelvehicInTab.setText("Vehicles in tab: " + vehicInTab);
-		// labelvehicInTab.setSize(400, 30); - setSize is now not active,
-		// because when it is, I see only one-digit number, when it's not active
-		// I can see at least part of two-digit number
-		labelvehicInTab.pack();
-	}
+	
 
 	private void SetValue(Vehicle v) {
 		TableItem item = new TableItem(table, SWT.NONE);
@@ -165,62 +151,7 @@ public class ParkingHouseGUI {
 			table.getColumn(i).pack();
 		}
 
-		final Combo combo = new Combo(shell, SWT.READ_ONLY);
-		combo.setItems(new String[] { "Bus", "Lorry", "Car", "Motorcycle" });
-		Rectangle clientArea = shell.getClientArea();
-		combo.setBounds(clientArea.x, clientArea.y, 400, 400);
-
-		Button okButton = new Button(shell, SWT.PUSH);
-		okButton.setText("OK");
-		okButton.addSelectionListener(new SelectionListener() {
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-
-				if (combo.getText().equals("Bus")) {
-					TableItem item = new TableItem(table, SWT.NONE);
-					item.setText(0, "ID");
-					item.setText(1, "" + bus1.getDlt());
-					item.setText(2, "" + bus1.getNumberOfWheels());
-					item.setText(3, "" + bus1.getLicensePlate());
-					item.setText(4, "" + bus1.getType());
-					item.setText(5, "" + bus1.busSeats);
-					labelvehicInTab.setText("Vehicles in tab: " + ++vehicInTab);
-				} else if (combo.getText().equals("Lorry")) {
-					TableItem item = new TableItem(table, SWT.NONE);
-					item.setText(0, "ID");
-					item.setText(1, "" + lorry1.getDlt());
-					item.setText(2, "" + lorry1.getNumberOfWheels());
-					item.setText(3, "" + lorry1.getLicensePlate());
-					item.setText(4, "" + lorry1.getType());
-					item.setText(5, "" + lorry1.maxLoad);
-					labelvehicInTab.setText("Vehicles in tab:" + ++vehicInTab);
-				} else if (combo.getText().equals("Car")) {
-					TableItem item = new TableItem(table, SWT.NONE);
-					item.setText(0, "ID");
-					item.setText(1, "" + car1.getDlt());
-					item.setText(2, "" + car1.getNumberOfWheels());
-					item.setText(3, "" + car1.getLicensePlate());
-					item.setText(4, "" + car1.getType());
-					item.setText(5, "" + car1.passengers);
-					labelvehicInTab.setText("Vehicles in tab:" + ++vehicInTab);
-				} else if (combo.getText().equals("Motorcycle")) {
-					TableItem item = new TableItem(table, SWT.NONE);
-					item.setText(0, "ID");
-					item.setText(1, "" + motorcycle1.getDlt());
-					item.setText(2, "" + motorcycle1.getNumberOfWheels());
-					item.setText(3, "" + motorcycle1.getLicensePlate());
-					item.setText(4, "" + motorcycle1.getType());
-					item.setText(5, "" + motorcycle1.horsepower);
-					labelvehicInTab.setText("Vehicles in tab:" + ++vehicInTab);
-				} else {
-
-				}
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-		});
+		
 
 	}
 
