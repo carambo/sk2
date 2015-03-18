@@ -67,11 +67,14 @@ public class AddVehicleDialog extends Dialog {
 
 	private void draw(final Shell shell) {
 
+		
 
 		final Combo combo = new Combo(shell, SWT.READ_ONLY);
 		combo.setItems(new String[] { "Bus", "Lorry", "Car", "Motorcycle" });
 		Rectangle clientArea = shell.getClientArea();
 		combo.setBounds(clientArea.x, clientArea.y, 400, 400);
+		
+		
 
 		final Text stayTimeInput = new Text(shell, SWT.BORDER | SWT.MULTI);
 		stayTimeInput.setText("enter stayTime");
@@ -93,7 +96,14 @@ public class AddVehicleDialog extends Dialog {
 		licensePlateInput.setSize(200, 25);
 		licensePlateInput.setLocation(new Point(100, 200));
 
-		Button ok = new Button(shell, SWT.PUSH);
+		 Label label = new Label(shell, SWT.CENTER);
+		 label.setText("Will stay for");
+		 label.setBounds(shell.getClientArea());
+		    
+		  
+		    
+		
+		    Button ok = new Button(shell, SWT.PUSH);
 		ok.setLocation(new Point(230, 230));
 		ok.setText("ok");
 		ok.addSelectionListener(new SelectionListener() {
