@@ -30,10 +30,6 @@ import org.eclipse.swt.graphics.Rectangle;
 
 public class ParkingHouseGUI {
 
-
-
-	
-	
 	private Table table;
 
 	public ParkingHouseGUI() {
@@ -82,8 +78,10 @@ public class ParkingHouseGUI {
 				AddVehicleDialog dialog = new AddVehicleDialog(shell);
 				dialog.open();
 				Vehicle v = dialog.getVehicle();
-				System.out.println("Choosed vehicle:" + v);
-				SetValue(v);
+				if (v != null) {
+					System.out.println("Choosed vehicle:" + v);
+					SetValue(v);
+				}
 			}
 
 			@Override
@@ -115,8 +113,6 @@ public class ParkingHouseGUI {
 		shell.setMenuBar(menuBar);
 	}
 
-	
-
 	private void SetValue(Vehicle v) {
 		TableItem item = new TableItem(table, SWT.NONE);
 		item.setText(0, "ID");
@@ -125,20 +121,18 @@ public class ParkingHouseGUI {
 		item.setText(3, "" + v.getVehType());
 		item.setText(4, "" + v.getVehColor());
 		item.setText(5, "" + v.getLicensePlate());
- 
+
 	}
 
 	private void setTab(final Shell shell, final Display diplay) {
-		table = new Table(shell, SWT.MULTI | SWT.BORDER
-				| SWT.FULL_SELECTION);
+		table = new Table(shell, SWT.MULTI | SWT.BORDER | SWT.FULL_SELECTION);
 		table.setLinesVisible(true);
 		table.setHeaderVisible(true);
 		GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
 		data.heightHint = 200;
 		table.setLayoutData(data);
-		String[] titles = { "ID", "DLT", "Will stay for", "Type",
-				"Color",
-				"License Plate"};
+		String[] titles = { "ID", "DLT", "Will stay for", "Type", "Color",
+				"License Plate" };
 		for (int i = 0; i < titles.length; i++) {
 			TableColumn column = new TableColumn(table, SWT.NONE);
 			column.setText(titles[i]);
@@ -146,8 +140,6 @@ public class ParkingHouseGUI {
 		for (int i = 0; i < titles.length; i++) {
 			table.getColumn(i).pack();
 		}
-
-		
 
 	}
 
