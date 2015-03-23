@@ -102,6 +102,7 @@ public class AddVehicleDialog extends Dialog {
 		});
 
 		Button buttonOk = new Button(shell, SWT.PUSH);
+		
 		setContext(combo, labelLicPlate, labelStayTime, labelVehColor,
 				labelVehType, stayTimeInput, vehTypeInput, vehColorInput,
 				licensePlateInput, labelDlt);
@@ -214,7 +215,7 @@ public class AddVehicleDialog extends Dialog {
 // kapacita, v parkingh hosue gui vytvorit na zaciatku, podal pridavania a
 // odstarovania vbozidiel, pridat progress bar, dat tam setProgressm axu
 // kapocata ako konstana, kapacita 250 - bude to treba pre[pocitatvat v prograss
-// nare podla precrmnt , na hlavnom dat dole progress bar aj s labelopm bude mi
+// nare podla percent , na hlavnom dat dole progress bar aj s labelopm bude mi
 // to ukazovat aj cislo, percenta apod;
 
 // dalsi dialog na odstarnovanie aut

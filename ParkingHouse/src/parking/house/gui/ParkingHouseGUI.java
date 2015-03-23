@@ -2,6 +2,7 @@ package parking.house.gui;
 
 import org.eclipse.swt.SWT;
 
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.events.SelectionEvent;
@@ -19,6 +20,8 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
+import parking.house.gui.AddProgressBar;
+
 import parking.house.model.Bus;
 import parking.house.model.Car;
 import parking.house.model.DrivingLicenseType;
@@ -27,6 +30,7 @@ import parking.house.model.Motorcycle;
 import parking.house.model.Vehicle;
 
 import org.eclipse.swt.graphics.Rectangle;
+import parking.house.gui.AddProgressBar;;
 
 public class ParkingHouseGUI {
 
@@ -45,6 +49,8 @@ public class ParkingHouseGUI {
 		shell.setLayout(gridLayout);
 		setMenu(shell, display);
 		setTab(shell, display);
+		AddProgressBar.setProgressBar(shell, display);
+		
 		shell.pack();
 		shell.open();
 		while (!shell.isDisposed()) {
@@ -53,6 +59,8 @@ public class ParkingHouseGUI {
 		}
 		display.dispose();
 	}
+	
+
 
 	private void setMenu(final Shell shell, final Display display) {
 		Menu menuBar, fileMenu;
