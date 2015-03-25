@@ -2,7 +2,6 @@ package parking.house.gui;
 
 import org.eclipse.swt.SWT;
 
-
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.events.SelectionEvent;
@@ -22,15 +21,11 @@ import org.eclipse.swt.widgets.Text;
 
 import parking.house.gui.AddProgressBar;
 
-import parking.house.model.Bus;
-import parking.house.model.Car;
-import parking.house.model.DrivingLicenseType;
-import parking.house.model.Lorry;
-import parking.house.model.Motorcycle;
 import parking.house.model.Vehicle;
 
 import org.eclipse.swt.graphics.Rectangle;
-import parking.house.gui.AddProgressBar;;
+
+import parking.house.gui.AddProgressBar; // toto mozem vymazat pri najblizssom commite na github
 
 public class ParkingHouseGUI {
 
@@ -49,8 +44,17 @@ public class ParkingHouseGUI {
 		shell.setLayout(gridLayout);
 		setMenu(shell, display);
 		setTab(shell, display);
-		AddProgressBar.setProgressBar(shell, display);
-		
+		AddProgressBar.setProgressBar(shell, display); // v tejto triede mam
+														// spraveny aj
+														// konstruktor, ktory
+														// vsak vyzera to tak
+														// nie je treba, mozem
+														// ho teda vymazat
+		AddToolbar.setToolbar(shell, display); // treba ho nejako dostat hore
+		tb(shell, display);
+		setMaxCapacityLabel(shell, display);
+		getCurrentCapacityLabel(shell, display);
+
 		shell.pack();
 		shell.open();
 		while (!shell.isDisposed()) {
@@ -59,8 +63,6 @@ public class ParkingHouseGUI {
 		}
 		display.dispose();
 	}
-	
-
 
 	private void setMenu(final Shell shell, final Display display) {
 		Menu menuBar, fileMenu;
@@ -129,6 +131,37 @@ public class ParkingHouseGUI {
 		item.setText(3, "" + v.getVehType());
 		item.setText(4, "" + v.getVehColor());
 		item.setText(5, "" + v.getLicensePlate());
+
+	}
+
+	private void tb(final Shell shell, final Display display) {
+		Button b = new Button(shell, SWT.PUSH);
+		b.setText("Here you can test progress bar");
+		b.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+
+				AddVehicleDialog.numberOfCars++;
+
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+
+	}
+
+	private void setMaxCapacityLabel(final Shell shell, final Display display) {
+		Label maxCapacity = new Label(shell, SWT.PUSH);
+		maxCapacity.setText("Maximal capacity is 150 cars");
+	}
+
+	private void getCurrentCapacityLabel(final Shell shell,
+			final Display display) {
+		Label currentCapacity = new Label(shell, SWT.PUSH);
+		currentCapacity
+				.setText("Parked cars: " + AddVehicleDialog.numberOfCars);
 
 	}
 

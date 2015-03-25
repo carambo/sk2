@@ -6,8 +6,8 @@ import org.eclipse.swt.widgets.*;
 
 public class AddToolbar {
 
-public static void main (String [] args) {
-	Shell shell = new Shell ();
+public static void setToolbar(final Shell shell, final Display display) {
+	
 	ToolBar bar = new ToolBar (shell, SWT.BORDER);
 	for (int i=0; i<8; i++) {
 		ToolItem item = new ToolItem (bar, SWT.PUSH);
@@ -17,10 +17,6 @@ public static void main (String [] args) {
 	bar.setLocation (clientArea.x, clientArea.y);
 	bar.pack ();
 	shell.open ();
-	Display display = shell.getDisplay ();
-	while (!shell.isDisposed ()) {
-		if (!display.readAndDispatch ()) display.sleep ();
-	}
-	display.dispose ();
+	
 } 
 }

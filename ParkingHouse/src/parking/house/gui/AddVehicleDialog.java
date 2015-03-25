@@ -25,9 +25,12 @@ import parking.house.model.Motorcycle;
 import parking.house.model.Vehicle;
 
 public class AddVehicleDialog extends Dialog {
+	
 
 	private Vehicle vehicle;
 	private Shell shell;
+
+	public static int numberOfCars;
 
 	public Vehicle getVehicle() {
 		return vehicle;
@@ -47,6 +50,7 @@ public class AddVehicleDialog extends Dialog {
 
 		draw(shell);
 
+		
 		shell.pack();
 		shell.open();
 
@@ -68,7 +72,7 @@ public class AddVehicleDialog extends Dialog {
 	private void draw(final Shell shell) {
 
 		final Combo combo = new Combo(shell, SWT.READ_ONLY);
-
+		
 		Label labelDlt = new Label(shell, SWT.CENTER);
 
 		Label labelStayTime = new Label(shell, SWT.CENTER);
@@ -121,6 +125,7 @@ public class AddVehicleDialog extends Dialog {
 
 				setValues(combo, stayTimeInput, vehTypeInput, vehColorInput,
 						licensePlateInput);
+				numberOfCars++;
 				shell.close();
 			}
 

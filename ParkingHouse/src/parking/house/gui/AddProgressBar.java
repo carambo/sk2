@@ -16,16 +16,16 @@ public class AddProgressBar {
 		bar.setBounds(clientArea.x, clientArea.y, 200, 32);
 		shell.open();
 
-		display.timerExec(100, new Runnable() {
-			int i = 0;
+		display.timerExec(150, new Runnable() {
 
 			@Override
 			public void run() {
 				if (bar.isDisposed())
 					return;
-				bar.setSelection(i++);
-				if (i <= bar.getMaximum())
-					display.timerExec(100, this);
+				bar.setSelection(AddVehicleDialog.numberOfCars);
+				bar.setMaximum(150);
+				if (AddVehicleDialog.numberOfCars <= bar.getMaximum())
+					display.timerExec(150, this);
 			}
 		});
 
