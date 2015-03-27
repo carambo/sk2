@@ -30,6 +30,7 @@ import parking.house.gui.AddProgressBar; // toto mozem vymazat pri najblizssom c
 public class ParkingHouseGUI {
 
 	private Table table;
+	private int Id;
 
 	public ParkingHouseGUI() {
 		createGUI();
@@ -42,6 +43,7 @@ public class ParkingHouseGUI {
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
 		shell.setLayout(gridLayout);
+		AddToolbar.setToolbar(shell, display); // treba ho nejako dostat hore
 		setMenu(shell, display);
 		setTab(shell, display);
 		AddProgressBar.setProgressBar(shell, display); // v tejto triede mam
@@ -50,8 +52,8 @@ public class ParkingHouseGUI {
 														// vsak vyzera to tak
 														// nie je treba, mozem
 														// ho teda vymazat
-		AddToolbar.setToolbar(shell, display); // treba ho nejako dostat hore
-		tb(shell, display);
+		testButtUpdateProgbar(shell, display);
+		testButtId(shell, display);
 		setMaxCapacityLabel(shell, display);
 		getCurrentCapacityLabel(shell, display);
 
@@ -90,7 +92,7 @@ public class ParkingHouseGUI {
 				Vehicle v = dialog.getVehicle();
 				if (v != null) {
 					System.out.println("Choosed vehicle:" + v);
-					SetValue(v);
+					setValue(v);
 				}
 			}
 
@@ -123,9 +125,9 @@ public class ParkingHouseGUI {
 		shell.setMenuBar(menuBar);
 	}
 
-	private void SetValue(Vehicle v) {
+	private void setValue(Vehicle v) {
 		TableItem item = new TableItem(table, SWT.NONE);
-		item.setText(0, "ID");
+		item.setText(0, "" + ++Id);
 		item.setText(1, "" + v.getDlt());
 		item.setText(2, "" + v.getStayTime());
 		item.setText(3, "" + v.getVehType());
@@ -134,7 +136,7 @@ public class ParkingHouseGUI {
 
 	}
 
-	private void tb(final Shell shell, final Display display) {
+	private void testButtUpdateProgbar(final Shell shell, final Display display) {
 		Button b = new Button(shell, SWT.PUSH);
 		b.setText("Here you can test progress bar");
 		b.addSelectionListener(new SelectionListener() {
@@ -142,6 +144,30 @@ public class ParkingHouseGUI {
 			public void widgetSelected(SelectionEvent arg0) {
 
 				AddVehicleDialog.numberOfCars++;
+
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+		});
+
+	}
+
+	private void testButtId(final Shell shell, final Display display) {
+		Button b2 = new Button(shell, SWT.PUSH);
+		b2.setText("Here you can test whether adding unique ID works");
+		b2.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+
+				TableItem item = new TableItem(table, SWT.NONE);
+				item.setText(0, "" + ++Id);
+				item.setText(1, "Q");
+				item.setText(2, "00");
+				item.setText(3, "test");
+				item.setText(4, "test");
+				item.setText(5, "test");
 
 			}
 

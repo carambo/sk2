@@ -26,7 +26,6 @@ import parking.house.model.Vehicle;
 
 public class AddVehicleDialog extends Dialog {
 	
-
 	private Vehicle vehicle;
 	private Shell shell;
 
